@@ -1,18 +1,24 @@
 ---
-const logos = [
-  { name: "Northline", style: "font-bold tracking-tight" },
-  { name: "Districts", style: "italic tracking-tight" },
-  { name: "Operators", style: "font-light tracking-[0.2em] uppercase" },
-  { name: "Fleets", style: "font-mono uppercase" },
-  { name: "Shifts", style: "font-semibold tracking-tighter" },
-  { name: "Routes", style: "tracking-wide uppercase" },
+// Placeholder marks until we land real customer logos.
+// Uniform weight + tracking keeps the row quiet — no false "designed" brand variety.
+const marks = [
+  "Northline Transportation",
+  "Type III · MN",
+  "Coverage districts",
+  "Early access cohort",
+  "Spring 2026",
 ];
 ---
 <section class="border-b border-[var(--color-border)] bg-[var(--color-bg)]">
-  <div class="mx-auto max-w-[1180px] px-6 py-10">
-    <div class="logo-strip flex flex-wrap items-center justify-center gap-x-12 gap-y-5 text-[18px] text-[var(--color-fg-dim)] md:flex-nowrap md:justify-between">
-      {logos.map((l) => (
-        <span class={l.style}>{l.name}</span>
+  <div class="mx-auto max-w-[1180px] px-6 py-12">
+    <div class="mb-7 flex items-center justify-center">
+      <span class="section-label">Trusted by small fleets that move people</span>
+    </div>
+    <div class="logo-strip flex flex-wrap items-center justify-center gap-x-12 gap-y-4 md:flex-nowrap md:justify-between">
+      {marks.map((m) => (
+        <span class="font-mono text-[12px] uppercase tracking-[0.16em] text-[var(--color-fg-dim)]">
+          {m}
+        </span>
       ))}
     </div>
   </div>
