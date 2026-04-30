@@ -1,0 +1,60 @@
+---
+import FeatureRow from "./FeatureRow.astro";
+import DispatchTable from "./product/DispatchTable.tsx";
+import RouteCard from "./product/RouteCard.tsx";
+import CheckInGrid from "./product/CheckInGrid.tsx";
+import ComplianceDiff from "./product/ComplianceDiff.tsx";
+import DrawerPreview from "./product/DrawerPreview.tsx";
+---
+<section id="features" class="grid-backdrop border-b border-[var(--color-border)] bg-[var(--color-bg)]">
+  <div class="mx-auto max-w-[1180px] space-y-32 px-6 py-28">
+
+    <FeatureRow
+      eyebrow="Operations"
+      title="Make dispatch self-driving."
+      body="One-tap check-ins, status changes, and standby relays — driven by the people calling in, not the people answering the radio. The board updates itself."
+    >
+      <DispatchTable client:load />
+    </FeatureRow>
+
+    <FeatureRow
+      eyebrow="Routes"
+      title="Plan every shift in one place."
+      body="Routes grouped by district, color-coded the way your dispatchers already think. Reassign a driver and every screen in the office sees it before the next radio call."
+      reverse
+    >
+      <div class="grid grid-cols-2 gap-3">
+        <RouteCard client:load routeNumber="AH-12" district="anoka" driver="Kathy R." vehicle="V-101" status="Covered" />
+        <RouteCard client:load routeNumber="WBL-21" district="wbl" driver="Marcus T." vehicle="V-114" status="At-risk" />
+        <RouteCard client:load routeNumber="NSP-04" district="northsp" driver="Devin O." vehicle="V-132" status="Covered" />
+        <RouteCard client:load routeNumber="CST-02" district="cst" driver="—" vehicle="—" status="Open" />
+      </div>
+    </FeatureRow>
+
+    <FeatureRow
+      eyebrow="Coverage"
+      title="Fill no-shows in seconds, not phone calls."
+      body="Standby drivers surface automatically. One click reassigns a route, notifies the right people, and writes the activity log so you don't have to remember at 5 PM what you decided at 5 AM."
+    >
+      <CheckInGrid client:load />
+    </FeatureRow>
+
+    <FeatureRow
+      eyebrow="Compliance"
+      title="Pre-trip and defects, side by side."
+      body="See yesterday vs today at a glance. When DOT walks in, you don't dig through binders — you click."
+      reverse
+    >
+      <ComplianceDiff client:load />
+    </FeatureRow>
+
+    <FeatureRow
+      eyebrow="Detail"
+      title="Every entity, one click away."
+      body="Drivers, vehicles, routes — each with its own slide-out timeline of activity, assignments, and notes. The kind of context that used to live only in someone's head."
+    >
+      <DrawerPreview client:load />
+    </FeatureRow>
+
+  </div>
+</section>

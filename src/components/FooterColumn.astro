@@ -1,0 +1,20 @@
+---
+type Props = { title: string };
+const { title } = Astro.props;
+---
+<div class="footer-col">
+  <div class="section-label mb-3">{title}</div>
+  <div class="flex flex-col">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .footer-col :global(a) {
+    color: var(--color-muted);
+    font-size: 13px;
+    padding: 4px 0;
+    text-decoration: none;
+  }
+  .footer-col :global(a:hover) { color: var(--color-fg); }
+</style>

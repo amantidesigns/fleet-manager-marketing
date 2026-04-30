@@ -1,0 +1,36 @@
+---
+import StatCard from "./product/StatCard.tsx";
+---
+<section class="border-b border-[var(--color-border)] bg-[var(--color-bg)]">
+  <div class="mx-auto max-w-[1180px] grid gap-12 px-6 py-28 md:grid-cols-2 md:gap-16">
+    <div>
+      <div class="section-label">Insight</div>
+      <h3 class="mt-3 text-[26px] font-semibold leading-tight tracking-[-0.01em] md:text-[34px]">
+        Understand operations at scale.
+      </h3>
+      <p class="mt-4 max-w-md text-[15px] leading-relaxed text-[var(--color-muted)]">
+        Coverage trends, no-show patterns, pre-trip pass rates — surfaced as the kind of numbers your owner actually asks about, not the ones a dashboard vendor decided you should care about.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-3">
+      <StatCard client:load label="Coverage avg · 30d" value={96} unit="%" delta={{ value: "1.2 pts", positive: true }} />
+      <StatCard client:load label="On-time check-ins" value={91} unit="%" delta={{ value: "0.8 pts", positive: true }} />
+      <StatCard client:load label="No-shows · 30d" value={7} delta={{ value: "3", positive: false }} />
+      <StatCard client:load label="Pre-trip pass" value={98} unit="%" delta={{ value: "0.4 pts", positive: true }} />
+
+      <!-- Mini chart placeholder (Chart.js will hydrate later if needed) -->
+      <div class="col-span-2 mt-2 rounded-[10px] border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+        <div class="section-label mb-3">Coverage · last 14 days</div>
+        <div class="flex h-24 items-end gap-1.5">
+          {[88, 92, 89, 94, 91, 93, 95, 96, 94, 97, 95, 96, 98, 97].map((v) => (
+            <span
+              class="flex-1 rounded-t"
+              style={`height: ${v - 60}%; background: linear-gradient(to top, var(--color-accent), color-mix(in srgb, var(--color-accent) 40%, transparent));`}
+            ></span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

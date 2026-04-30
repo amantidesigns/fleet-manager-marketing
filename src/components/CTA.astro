@@ -1,0 +1,26 @@
+---
+import WaitlistForm from "./WaitlistForm.tsx";
+---
+<section class="border-b border-[var(--color-border)] bg-[var(--color-bg)]">
+  <div class="mx-auto max-w-[1180px] px-6 py-32 text-center">
+    <div
+      class="mx-auto h-px w-32 opacity-40"
+      style="background: linear-gradient(to right, transparent, var(--color-accent), transparent);"
+    ></div>
+    <h2 class="mt-10 text-[40px] font-semibold leading-[1.05] tracking-[-0.02em] md:text-[56px]">
+      Built for the way <br class="hidden md:inline" />small fleets actually run.
+    </h2>
+    <p class="mx-auto mt-5 max-w-xl text-[16px] text-[var(--color-muted)]">
+      We're working with our first customers right now. If your office runs on spreadsheets and a radio, we want to talk.
+    </p>
+    <div class="mt-8 flex flex-col items-center gap-3">
+      <WaitlistForm client:load compact />
+      <a
+        href="mailto:amantidesigns@gmail.com?subject=Fleet%20Manager%20%E2%80%94%20Contact%20sales"
+        class="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+      >
+        Or contact sales →
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,71 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Block from "../components/Block.astro";
+import StatCard from "../components/product/StatCard.tsx";
+import ActivityRow from "../components/product/ActivityRow.tsx";
+import DispatchTable from "../components/product/DispatchTable.tsx";
+import RouteCard from "../components/product/RouteCard.tsx";
+import CheckInGrid from "../components/product/CheckInGrid.tsx";
+import ComplianceDiff from "../components/product/ComplianceDiff.tsx";
+import DrawerPreview from "../components/product/DrawerPreview.tsx";
+---
+<Base title="Component library — Fleet Manager">
+  <Nav />
+  <main class="mx-auto max-w-[1180px] px-6 py-16">
+    <div class="max-w-2xl">
+      <div class="section-label">Internal</div>
+      <h1 class="mt-3 text-[36px] font-semibold tracking-[-0.01em]">Product component library</h1>
+      <p class="mt-3 text-[15px] text-[var(--color-muted)]">
+        Live, read-only DOM replicas of the dashboard's UI. Drop these into marketing sections instead of flat screenshots — they're real components, so they always look like the product.
+      </p>
+    </div>
+
+    <div class="mt-16 space-y-20">
+      <Block name="StatCard" path="src/components/product/StatCard.tsx">
+        <div class="grid gap-3 md:grid-cols-4">
+          <StatCard client:load label="Coverage" value={94} unit="%" delta={{ value: "2 pts", positive: true }} />
+          <StatCard client:load label="Routes assigned" value={56} delta={{ value: "1", positive: true }} />
+          <StatCard client:load label="Open" value={3} delta={{ value: "1", positive: false }} />
+          <StatCard client:load label="Coverage · hero" value={98} unit="%" hero />
+        </div>
+      </Block>
+
+      <Block name="ActivityRow" path="src/components/product/ActivityRow.tsx">
+        <div class="max-w-md rounded-[10px] border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+          <ActivityRow client:load who="Kathy" what="checked in V-114" category="status" time="2 min ago" />
+          <ActivityRow client:load who="Janelle" what="called in — relay to Marcus" category="alert" time="3 min ago" pulsing />
+          <ActivityRow client:load who="Marcus" what="assigned WBL-21 standby" category="assignment" time="3 min ago" />
+          <ActivityRow client:load who="Devin" what="pre-trip passed" category="inspection" time="6 min ago" />
+        </div>
+      </Block>
+
+      <Block name="DispatchTable" path="src/components/product/DispatchTable.tsx">
+        <div class="max-w-xl"><DispatchTable client:load /></div>
+      </Block>
+
+      <Block name="RouteCard" path="src/components/product/RouteCard.tsx">
+        <div class="grid max-w-2xl grid-cols-2 gap-3">
+          <RouteCard client:load routeNumber="AH-12" district="anoka" driver="Kathy R." vehicle="V-101" status="Covered" />
+          <RouteCard client:load routeNumber="WBL-21" district="wbl" driver="Marcus T." vehicle="V-114" status="At-risk" />
+          <RouteCard client:load routeNumber="NSP-04" district="northsp" driver="Devin O." vehicle="V-132" status="Covered" />
+          <RouteCard client:load routeNumber="CST-02" district="cst" driver="—" vehicle="—" status="Open" />
+        </div>
+      </Block>
+
+      <Block name="CheckInGrid" path="src/components/product/CheckInGrid.tsx">
+        <div class="max-w-md"><CheckInGrid client:load /></div>
+      </Block>
+
+      <Block name="ComplianceDiff" path="src/components/product/ComplianceDiff.tsx">
+        <div class="max-w-2xl"><ComplianceDiff client:load /></div>
+      </Block>
+
+      <Block name="DrawerPreview" path="src/components/product/DrawerPreview.tsx">
+        <div class="max-w-2xl"><DrawerPreview client:load /></div>
+      </Block>
+    </div>
+  </main>
+  <Footer />
+</Base>

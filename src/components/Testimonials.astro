@@ -1,0 +1,45 @@
+---
+// Note: testimonial copy below is illustrative for layout. Replace with verified
+// quotes from Karl/Kathy at Northline before launch (mark as "DRAFT — pending verification").
+const testimonials = [
+  {
+    quote: "Used to be a whiteboard, a spreadsheet, and three phone calls. Now it's one screen the whole office watches.",
+    name: "Operations manager",
+    role: "Type III school transportation",
+    bg: "var(--color-accent-2)",
+    fg: "#0a2e1a",
+  },
+  {
+    quote: "I can see who's checked in without leaving my chair. The 5 AM rush isn't quiet, but it's a lot less loud.",
+    name: "AM dispatcher",
+    role: "Type III school transportation",
+    bg: "#f4eedd",
+    fg: "#1a1814",
+  },
+];
+---
+<section id="customers" class="border-b border-[var(--color-border)] bg-[var(--color-bg)]">
+  <div class="mx-auto max-w-[1180px] px-6 py-24">
+    <div class="grid gap-4 md:grid-cols-2">
+      {testimonials.map((t) => (
+        <figure
+          class="rounded-[18px] p-8"
+          style={`background: ${t.bg}; color: ${t.fg};`}
+        >
+          <blockquote class="text-[20px] font-medium leading-snug tracking-[-0.01em] md:text-[22px]">
+            “{t.quote}”
+          </blockquote>
+          <figcaption class="mt-8 flex items-center gap-3 text-[13px]">
+            <span class="grid h-9 w-9 place-items-center rounded-full bg-black/15 font-semibold">
+              {t.name.charAt(0)}
+            </span>
+            <span>
+              <div class="font-semibold">{t.name}</div>
+              <div class="opacity-70">{t.role}</div>
+            </span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

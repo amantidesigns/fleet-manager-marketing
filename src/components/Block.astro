@@ -1,0 +1,13 @@
+---
+type Props = { name: string; path: string };
+const { name, path } = Astro.props;
+---
+<section>
+  <div class="flex items-baseline justify-between gap-4 border-b border-[var(--color-border)] pb-3">
+    <h2 class="text-[18px] font-semibold tracking-tight">{name}</h2>
+    <code class="font-mono text-[11px] text-[var(--color-muted-dim)]">{path}</code>
+  </div>
+  <div class="mt-6">
+    <slot />
+  </div>
+</section>

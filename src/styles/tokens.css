@@ -1,0 +1,66 @@
+/*
+ * Fleet Manager design tokens.
+ * Ported from the Northline Dashboard so the marketing front door and the
+ * product feel like one continuous system.
+ *
+ * Source: ../../../2603 Northline Dashboard/src/app/globals.css (@theme block)
+ */
+
+@theme {
+  /* Surface */
+  --color-bg: #0a0a0b;
+  --color-bg-2: #0f0f11;
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-2: rgba(255, 255, 255, 0.06);
+  --color-surface-3: rgba(255, 255, 255, 0.08);
+
+  /* Text */
+  --color-fg: #ededef;
+  --color-fg-dim: #c8c8cc;
+  --color-muted: #a0a0a6;
+  --color-muted-dim: #7c7c84;
+
+  /* Borders */
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-2: rgba(255, 255, 255, 0.10);
+  --color-border-3: rgba(255, 255, 255, 0.16);
+
+  /* Brand accents (carried from dashboard) */
+  --color-accent: #2e86c1;
+  --color-accent-strong: #1b4f72;
+  --color-accent-dim: rgba(46, 134, 193, 0.12);
+  --color-accent-2: #2ecc71;
+  --color-accent-2-dim: rgba(46, 204, 113, 0.12);
+
+  /* Status (semantic, used inside product replicas) */
+  --color-ok: #22c55e;
+  --color-danger: #ef4444;
+  --color-warning: #eab308;
+  --color-info: #3b82f6;
+  --color-inactive: #6b7280;
+
+  /* Service-area route colors (from dashboard) */
+  --color-route-anoka: #2563eb;
+  --color-route-northsp: #7c3aed;
+  --color-route-southsp: #db2777;
+  --color-route-wbl: #0891b2;
+  --color-route-cst: #d97706;
+
+  /* Type scale */
+  --font-sans: "Inter Variable", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "Fira Code", monospace;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 80px rgba(46, 134, 193, 0.18);
+
+  /* Motion */
+  --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+}

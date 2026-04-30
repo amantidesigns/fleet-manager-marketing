@@ -1,0 +1,113 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+@import "./tokens.css";
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
+  letter-spacing: -0.005em;
+}
+
+body {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* Reusable section label, ported from dashboard */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted-dim);
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background:
+    radial-gradient(80% 50% at 50% 0%, rgba(46, 134, 193, 0.18), transparent 60%),
+    radial-gradient(60% 40% at 50% 30%, rgba(46, 204, 113, 0.05), transparent 60%),
+    var(--color-bg);
+}
+
+/* Subtle grid backdrop used behind feature sections */
+.grid-backdrop {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Glass card */
+.glass {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(8px);
+}
+
+/* Scroll-triggered fade-in (no JS needed for entrance) */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fade-up 0.7s var(--ease-snappy) both;
+}
+
+/* Pulsing status dot used in product replicas */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.6; }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Logo strip subtle desaturation */
+.logo-strip > * {
+  filter: grayscale(1) brightness(0.85);
+  opacity: 0.55;
+  transition: opacity 0.2s, filter 0.2s;
+}
+.logo-strip > *:hover {
+  filter: grayscale(0) brightness(1);
+  opacity: 1;
+}
+
+/* Linear-style small caps tag */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-2);
+  background: var(--color-surface);
+}
+
+/* Hide scrollbar in product preview cards */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }

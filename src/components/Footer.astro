@@ -1,0 +1,40 @@
+---
+import Logo from "./Logo.astro";
+import FooterColumn from "./FooterColumn.astro";
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+  <div class="mx-auto max-w-[1180px] px-6 py-14">
+    <div class="grid grid-cols-2 gap-10 md:grid-cols-5">
+      <div class="col-span-2">
+        <Logo size={18} />
+        <p class="mt-3 max-w-xs text-[13px] text-[var(--color-muted)]">
+          Real-time dispatch built for the way small fleets actually run their mornings.
+        </p>
+      </div>
+
+      <FooterColumn title="Product">
+        <a href="#product">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#changelog">Changelog</a>
+      </FooterColumn>
+
+      <FooterColumn title="Resources">
+        <a href="#customers">Customers</a>
+        <a href="/components">Components</a>
+        <a href="#contact">Contact</a>
+      </FooterColumn>
+
+      <FooterColumn title="Company">
+        <a href="#about">About</a>
+        <a href="mailto:amantidesigns@gmail.com">Email</a>
+      </FooterColumn>
+    </div>
+
+    <div class="mt-12 flex flex-col items-start justify-between gap-3 border-t border-[var(--color-border)] pt-6 text-[12px] text-[var(--color-muted-dim)] md:flex-row md:items-center">
+      <span>© {year} Fleet Manager. All rights reserved.</span>
+      <span class="font-mono">Built in Saint Paul, MN</span>
+    </div>
+  </div>
+</footer>

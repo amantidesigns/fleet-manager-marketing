@@ -1,0 +1,79 @@
+---
+import WaitlistForm from "./WaitlistForm.tsx";
+import StatCard from "./product/StatCard.tsx";
+import DispatchTable from "./product/DispatchTable.tsx";
+import ActivityRow from "./product/ActivityRow.tsx";
+---
+<section class="hero-gradient relative overflow-hidden border-b border-[var(--color-border)]">
+  <div class="mx-auto max-w-[1180px] px-6 pt-24 pb-20 md:pt-32 md:pb-28">
+    <div class="fade-up max-w-3xl">
+      <span class="tag">Closed beta · School transportation</span>
+      <h1 class="mt-5 text-[44px] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--color-fg)] md:text-[64px]">
+        The dispatch system school transportation runs on.
+      </h1>
+      <p class="mt-5 max-w-2xl text-[17px] leading-relaxed text-[var(--color-muted)]">
+        Replace the spreadsheet, the whiteboard, and the radio with one live board your whole office shares — purpose-built for the 5 AM rush.
+      </p>
+      <div class="mt-8 flex flex-col items-start gap-3" id="waitlist">
+        <WaitlistForm client:load />
+        <span class="text-[12px] text-[var(--color-muted-dim)]">
+          New signups are limited while we work with our first customers.
+        </span>
+      </div>
+    </div>
+
+    <!-- Hero product card: a framed glassy preview that's actually live DOM -->
+    <div class="fade-up mt-16 md:mt-20" style="animation-delay: 0.15s">
+      <div class="relative">
+        <div
+          class="absolute -inset-x-8 -top-8 -bottom-8 -z-10 opacity-60 blur-3xl"
+          style="background: radial-gradient(50% 50% at 50% 50%, rgba(46,134,193,0.35), transparent 70%);"
+        ></div>
+        <div class="glass overflow-hidden rounded-[14px] p-1 shadow-[0_30px_120px_-30px_rgba(0,0,0,0.7)]">
+          <div class="rounded-[12px] border border-[var(--color-border-2)] bg-[var(--color-bg-2)]">
+            <!-- Faux app chrome -->
+            <div class="flex items-center gap-2 border-b border-[var(--color-border)] px-4 py-2.5">
+              <span class="flex gap-1.5">
+                <span class="h-2.5 w-2.5 rounded-full bg-[#3a3a3e]"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-[#3a3a3e]"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-[#3a3a3e]"></span>
+              </span>
+              <div class="ml-3 flex items-center gap-3 text-[12px] text-[var(--color-muted)]">
+                <span class="font-mono">app.fleetmanager.dev</span>
+                <span class="opacity-40">/</span>
+                <span>Operations · AM Shift</span>
+              </div>
+              <div class="ml-auto flex items-center gap-2 font-mono text-[11px] text-[var(--color-muted-dim)]">
+                <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--color-ok)]"></span>
+                Live
+              </div>
+            </div>
+
+            <!-- App body -->
+            <div class="grid gap-4 p-5 md:grid-cols-[1fr_1.4fr_1fr]">
+              <!-- Left: stats column -->
+              <div class="flex flex-col gap-3">
+                <StatCard client:load label="Coverage" value={94} unit="%" delta={{ value: "2 pts", positive: true }} hero />
+                <StatCard client:load label="Routes assigned" value={56} delta={{ value: "1", positive: true }} />
+                <StatCard client:load label="Open" value={3} delta={{ value: "1", positive: false }} />
+              </div>
+
+              <!-- Center: dispatch table -->
+              <DispatchTable client:load />
+
+              <!-- Right: activity -->
+              <div class="rounded-[10px] border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+                <div class="section-label mb-3">Activity</div>
+                <ActivityRow client:load who="Kathy" what="checked in V-114" category="status" time="2 min ago" />
+                <ActivityRow client:load who="Janelle" what="called in — relay to Marcus" category="alert" time="3 min ago" pulsing />
+                <ActivityRow client:load who="Marcus" what="assigned WBL-21 standby" category="assignment" time="3 min ago" />
+                <ActivityRow client:load who="Devin" what="pre-trip passed" category="inspection" time="6 min ago" />
+                <ActivityRow client:load who="Karl" what="approved swap" category="note" time="9 min ago" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
