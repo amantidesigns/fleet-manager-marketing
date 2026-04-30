@@ -2,39 +2,63 @@
 import Logo from "./Logo.astro";
 import FooterColumn from "./FooterColumn.astro";
 const year = new Date().getFullYear();
+const APP_URL = "https://northline-dashboard.vercel.app";
 ---
 <footer class="border-t border-[var(--color-border)] bg-[var(--color-bg)]">
-  <div class="mx-auto max-w-[1180px] px-6 py-14">
-    <div class="grid grid-cols-2 gap-10 md:grid-cols-5">
-      <div class="col-span-2">
-        <Logo size={18} />
-        <p class="mt-3 max-w-xs text-[13px] text-[var(--color-muted)]">
-          Real-time dispatch built for the way small fleets actually run their mornings.
+  <div class="mx-auto max-w-[1180px] px-6 pt-20 pb-10">
+    <div class="grid grid-cols-2 gap-10 md:grid-cols-12">
+      <div class="col-span-2 md:col-span-4">
+        <Logo size={20} />
+        <p class="mt-4 max-w-xs text-[13px] leading-[1.6] text-[var(--color-muted)]">
+          Real-time dispatch built for the way small fleets actually run their mornings. Made by a one-person team in Saint Paul.
         </p>
+        <a href="#waitlist" class="mt-5 inline-flex rounded-full border border-[var(--color-border-2)] bg-[var(--color-surface)] px-3.5 py-1.5 text-[12px] text-[var(--color-fg-dim)] hover:bg-[var(--color-surface-2)]">
+          Request early access →
+        </a>
       </div>
 
-      <FooterColumn title="Product">
-        <a href="#product">Overview</a>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#changelog">Changelog</a>
-      </FooterColumn>
+      <div class="md:col-span-2">
+        <FooterColumn title="Product">
+          <a href="#product">Overview</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#changelog">Changelog</a>
+          <a href="/components">Components</a>
+        </FooterColumn>
+      </div>
 
-      <FooterColumn title="Resources">
-        <a href="#customers">Customers</a>
-        <a href="/components">Components</a>
-        <a href="#contact">Contact</a>
-      </FooterColumn>
+      <div class="md:col-span-2">
+        <FooterColumn title="Customers">
+          <a href="#customers">Case studies</a>
+          <a href="#customers">Northline</a>
+          <a href="#customers">Why Type III</a>
+          <a href="#customers">Coverage districts</a>
+        </FooterColumn>
+      </div>
 
-      <FooterColumn title="Company">
-        <a href="#about">About</a>
-        <a href="mailto:amantidesigns@gmail.com">Email</a>
-      </FooterColumn>
+      <div class="md:col-span-2">
+        <FooterColumn title="Resources">
+          <a href={APP_URL}>Log in</a>
+          <a href="mailto:amantidesigns@gmail.com">Contact sales</a>
+          <a href="mailto:amantidesigns@gmail.com?subject=Fleet%20Manager%20support">Support</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#terms">Terms</a>
+        </FooterColumn>
+      </div>
+
+      <div class="md:col-span-2">
+        <FooterColumn title="Company">
+          <a href="#about">About</a>
+          <a href="#manifesto">Manifesto</a>
+          <a href="https://github.com/amantidesigns/fleet-manager-marketing">Source</a>
+          <a href="mailto:amantidesigns@gmail.com">Email</a>
+        </FooterColumn>
+      </div>
     </div>
 
-    <div class="mt-12 flex flex-col items-start justify-between gap-3 border-t border-[var(--color-border)] pt-6 text-[12px] text-[var(--color-muted-dim)] md:flex-row md:items-center">
+    <div class="mt-16 flex flex-col items-start justify-between gap-3 border-t border-[var(--color-border)] pt-7 text-[12px] text-[var(--color-muted-dim)] md:flex-row md:items-center">
       <span>© {year} Fleet Manager. All rights reserved.</span>
-      <span class="font-mono">Built in Saint Paul, MN</span>
+      <span class="font-mono uppercase tracking-[0.16em]">Built in Saint Paul · MN</span>
     </div>
   </div>
 </footer>
