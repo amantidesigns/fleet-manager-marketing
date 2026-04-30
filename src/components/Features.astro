@@ -6,8 +6,12 @@ import CheckInGrid from "./product/CheckInGrid.tsx";
 import ComplianceDiff from "./product/ComplianceDiff.tsx";
 import DrawerPreview from "./product/DrawerPreview.tsx";
 ---
-<section id="features" class="grid-backdrop border-b border-[var(--color-border)] bg-[var(--color-bg)]">
-  <div class="mx-auto max-w-[1180px] space-y-32 px-6 py-28">
+<section id="features" class="relative border-b border-[var(--color-border)] bg-[var(--color-bg)]">
+  <div
+    class="pointer-events-none absolute inset-x-0 top-0 h-[640px] -z-10 opacity-50"
+    style="background: radial-gradient(80% 50% at 50% 0%, rgba(46,134,193,0.10), transparent 70%);"
+  ></div>
+  <div class="mx-auto max-w-[1180px] space-y-40 px-6 py-32">
 
     <FeatureRow
       eyebrow="Operations"
