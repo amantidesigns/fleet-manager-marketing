@@ -5,16 +5,16 @@ import DispatchTable from "./product/DispatchTable.tsx";
 import ActivityRow from "./product/ActivityRow.tsx";
 ---
 <section class="hero-gradient relative overflow-hidden border-b border-[var(--color-border)]">
-  <div class="mx-auto max-w-[1180px] px-6 pt-24 pb-20 md:pt-32 md:pb-28">
+  <div class="mx-auto max-w-[1180px] px-6 pt-20 pb-16 md:pt-28 md:pb-20">
     <div class="fade-up max-w-3xl">
       <span class="tag">Closed beta · School transportation</span>
-      <h1 class="mt-5 text-[44px] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--color-fg)] md:text-[64px]">
+      <h1 class="mt-6 text-[46px] font-semibold leading-[1.02] tracking-[-0.035em] text-[var(--color-fg)] md:text-[68px]">
         The dispatch system school transportation runs on.
       </h1>
-      <p class="mt-5 max-w-2xl text-[17px] leading-relaxed text-[var(--color-muted)]">
+      <p class="mt-6 max-w-xl text-[16px] leading-[1.55] text-[var(--color-muted)]">
         Replace the spreadsheet, the whiteboard, and the radio with one live board your whole office shares — purpose-built for the 5 AM rush.
       </p>
-      <div class="mt-8 flex flex-col items-start gap-3" id="waitlist">
+      <div class="mt-7 flex flex-col items-start gap-3" id="waitlist">
         <WaitlistForm client:load />
         <span class="text-[12px] text-[var(--color-muted-dim)]">
           New signups are limited while we work with our first customers.
@@ -23,7 +23,7 @@ import ActivityRow from "./product/ActivityRow.tsx";
     </div>
 
     <!-- Hero product card: a framed glassy preview that's actually live DOM -->
-    <div class="fade-up mt-16 md:mt-20" style="animation-delay: 0.15s">
+    <div class="fade-up mt-12 md:mt-14" style="animation-delay: 0.15s">
       <div class="relative">
         <div
           class="absolute -inset-x-8 -top-8 -bottom-8 -z-10 opacity-60 blur-3xl"
