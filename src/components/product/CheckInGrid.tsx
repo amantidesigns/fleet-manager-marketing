@@ -24,13 +24,22 @@ export default function CheckInGrid() {
         <span className="font-mono text-[11px] text-[var(--color-muted)]">5:42 AM</span>
       </div>
       <div className="grid grid-cols-8 gap-1.5">
-        {grid.map((cell, i) => (
-          <span
-            key={i}
-            className={`aspect-square rounded-[3px] ${cell === "called" || cell === "ncns" ? "pulse-dot" : ""}`}
-            style={{ background: cellColor[cell], opacity: cell === "off" ? 0.35 : 0.9 }}
-          />
-        ))}
+        {grid.map((cell, i) => {
+          const loud = cell === "called" || cell === "ncns";
+          const quiet = cell === "ok" || cell === "off";
+          return (
+            <span
+              key={i}
+              className={`aspect-square rounded-[3px] ${loud ? "pulse-dot" : ""}`}
+              style={{
+                background: loud
+                  ? cellColor[cell]
+                  : `color-mix(in srgb, ${cellColor[cell]} ${quiet ? 32 : 55}%, transparent)`,
+                opacity: cell === "off" ? 0.4 : 1,
+              }}
+            />
+          );
+        })}
       </div>
       <div className="mt-3 flex flex-wrap gap-3 text-[11px] text-[var(--color-muted)]">
         <Legend color="var(--color-ok)" label="Present" />
