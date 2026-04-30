@@ -26,10 +26,10 @@ import ActivityRow from "./product/ActivityRow.tsx";
     <div class="fade-up mt-12 md:mt-14" style="animation-delay: 0.15s">
       <div class="relative">
         <div
-          class="absolute -inset-x-8 -top-8 -bottom-8 -z-10 opacity-60 blur-3xl"
-          style="background: radial-gradient(50% 50% at 50% 50%, rgba(46,134,193,0.35), transparent 70%);"
+          class="absolute -inset-x-12 -top-16 -bottom-16 -z-10 opacity-70 blur-3xl"
+          style="background: radial-gradient(50% 50% at 50% 50%, rgba(46,134,193,0.45), transparent 70%);"
         ></div>
-        <div class="glass overflow-hidden rounded-[14px] p-1 shadow-[0_30px_120px_-30px_rgba(0,0,0,0.7)]">
+        <div class="glass overflow-hidden rounded-[16px] p-1 shadow-[0_50px_180px_-40px_rgba(0,0,0,0.85),0_0_0_1px_rgba(255,255,255,0.04)]">
           <div class="rounded-[12px] border border-[var(--color-border-2)] bg-[var(--color-bg-2)]">
             <!-- Faux app chrome -->
             <div class="flex items-center gap-2 border-b border-[var(--color-border)] px-4 py-2.5">
@@ -50,7 +50,7 @@ import ActivityRow from "./product/ActivityRow.tsx";
             </div>
 
             <!-- App body -->
-            <div class="grid gap-4 p-5 md:grid-cols-[1fr_1.4fr_1fr]">
+            <div class="grid gap-5 p-6 md:grid-cols-[0.9fr_1.7fr_1.1fr]">
               <!-- Left: stats column -->
               <div class="flex flex-col gap-3">
                 <StatCard client:load label="Coverage" value={94} unit="%" delta={{ value: "2 pts", positive: true }} hero />
@@ -58,7 +58,7 @@ import ActivityRow from "./product/ActivityRow.tsx";
                 <StatCard client:load label="Open" value={3} delta={{ value: "1", positive: false }} />
               </div>
 
-              <!-- Center: dispatch table -->
+              <!-- Center: dispatch table (visually dominant column) -->
               <DispatchTable client:load />
 
               <!-- Right: activity -->
