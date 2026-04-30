@@ -7,7 +7,7 @@ type Props = {
 };
 const { eyebrow, title, body, reverse = false } = Astro.props;
 ---
-<div class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+<div class="reveal grid items-center gap-12 md:grid-cols-2 md:gap-16">
   <div class={reverse ? "md:order-2" : ""}>
     <div class="section-label">{eyebrow}</div>
     <h3 class="mt-3 text-[26px] font-semibold leading-tight tracking-[-0.01em] md:text-[34px]">
