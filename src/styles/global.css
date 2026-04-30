@@ -71,19 +71,21 @@ body {
   animation: fade-up 0.7s var(--ease-snappy) both;
 }
 
-/* Scroll-reveal: targets get .reveal, gain .is-visible via IntersectionObserver */
-.reveal {
+/* Scroll-reveal: only hide when JS has wired up the observer.
+   Without `html.js`, .reveal stays visible — search engines, no-JS users,
+   and screenshot tools see content normally. */
+html.js .reveal {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.8s var(--ease-snappy), transform 0.8s var(--ease-snappy);
   will-change: opacity, transform;
 }
-.reveal.is-visible {
+html.js .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  html.js .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* Pulsing status dot used in product replicas */
