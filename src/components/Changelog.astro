@@ -1,8 +1,8 @@
 ---
 const entries = [
-  { tag: "Released", date: "Apr 23, 2026", title: "Standby auto-suggest", body: "When a driver calls in, eligible standbys surface automatically — sorted by district, then by recency." },
-  { tag: "Released", date: "Apr 17, 2026", title: "55-inch optimized layout", body: "Density modes for wall-mounted office monitors. Every dispatcher sees the same grid from across the room." },
-  { tag: "Beta", date: "Apr 09, 2026", title: "XLSX export", body: "One-click export of dispatch, fleet, or employee tables. Formatted for the people who still print." },
+  { tag: "Released", date: "Apr 23, 2026", title: "Spare van swap-back", body: "Click to restore the original van the moment it returns from the shop. No more chasing edits across yesterday's spreadsheet." },
+  { tag: "Released", date: "Apr 17, 2026", title: "Effective-dated check-ins", body: "Schedule a future-dated check-in change today. The dispatcher who walks in tomorrow already has the right state on screen." },
+  { tag: "Beta", date: "Apr 09, 2026", title: "Notes cross-linked everywhere", body: "Route notes show on the driver. Driver notes show on the route. No more hopping between tabs to remember what you said at 5:42 AM." },
 ];
 ---
 <section id="changelog" class="border-b border-[var(--color-border)] bg-[var(--color-bg)]">
@@ -21,7 +21,7 @@ const entries = [
 
     <div class="mt-8 grid gap-4 md:mt-10 md:grid-cols-3">
       {entries.map((e) => (
-        <article class="rounded-[14px] border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
+        <article class="card-lift rounded-[14px] border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
           <div class="flex items-center justify-between">
             <span class="rounded-full border border-[var(--color-border-2)] px-2 py-0.5 text-[11px] uppercase tracking-wider text-[var(--color-accent)]">
               {e.tag}

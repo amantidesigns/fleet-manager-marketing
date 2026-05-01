@@ -61,7 +61,7 @@ body {
   backdrop-filter: blur(8px);
 }
 
-/* Initial-paint fade-up (used by hero) */
+/* Initial-paint fade-up (legacy hero variant) */
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
@@ -69,6 +69,90 @@ body {
 
 .fade-up {
   animation: fade-up 0.7s var(--ease-snappy) both;
+}
+
+/*
+ * Staggered child entrance.
+ * Pattern: parent has .stagger, each child gets .stagger-child + style="--idx: N".
+ * Optional: parent can override --stagger-step (default 70ms) and --stagger-base (default 60ms initial offset).
+ *
+ * @keyframes uses translate3d for GPU compositing.
+ */
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.stagger-child {
+  opacity: 0;
+  animation: stagger-in 0.65s var(--ease-snappy) both;
+  animation-delay: calc(var(--stagger-base, 60ms) + var(--idx, 0) * var(--stagger-step, 70ms));
+  will-change: opacity, transform;
+}
+
+/* Subtle card lift on hover — used across feature/changelog/intro cards. */
+.card-lift {
+  transition:
+    transform 0.35s var(--ease-snappy),
+    border-color 0.35s ease,
+    background-color 0.35s ease;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-border-2);
+}
+
+/* Pill button micro-motion */
+.btn-press {
+  transition:
+    transform 0.18s var(--ease-snappy),
+    background-color 0.2s ease;
+}
+.btn-press:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+/* Underline-on-hover for inline links (used by "View all", "Customer stories", etc.) */
+.link-underline {
+  position: relative;
+  transition: color 0.2s ease;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.35s var(--ease-snappy);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stagger-child,
+  .fade-up {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+  .card-lift,
+  .btn-press,
+  .link-underline,
+  .link-underline::after {
+    transition: none;
+  }
 }
 
 /* Scroll-reveal: only hide when JS has wired up the observer.

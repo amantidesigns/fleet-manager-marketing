@@ -1,0 +1,109 @@
+---
+import Glyph from "./RoadmapGlyph.astro";
+
+type Phase = "in-design" | "shipping";
+
+type Item = {
+  phase: Phase;
+  phaseLabel: string;
+  title: string;
+  body: string;
+  glyph: "device" | "alert" | "sunrise";
+};
+
+const items: Item[] = [
+  {
+    phase: "in-design",
+    phaseLabel: "Phase 2 · In active design",
+    title: "A driver app that talks to the board.",
+    body: "Drivers check in, run pre-trip with photos, acknowledge relay notes, and clear routes from a tablet in the van. Every action lands on the dispatcher's screen the same second.",
+    glyph: "device",
+  },
+  {
+    phase: "shipping",
+    phaseLabel: "Phase 1 · Shipping in weeks",
+    title: "Alerts that know your calendar.",
+    body: "Late check-ins, uncovered routes, pre-trip deadlines — surfaced with the urgency they deserve. Silent on no-school days. Configurable per shift.",
+    glyph: "alert",
+  },
+  {
+    phase: "shipping",
+    phaseLabel: "Phase 1 · Shipping in weeks",
+    title: "Walk in already knowing.",
+    body: "Before the first radio call, see who's out, what's covered, what's open, and what's already pre-arranged. The 5 AM rush starts before the rush.",
+    glyph: "sunrise",
+  },
+];
+
+const phaseColor: Record<Phase, string> = {
+  "in-design": "var(--color-accent)",
+  shipping: "var(--color-accent-2)",
+};
+---
+<section id="roadmap" class="border-b border-[var(--color-border)] bg-[var(--color-bg)]">
+  <div class="mx-auto max-w-[1180px] py-16 md:py-24">
+    <div class="flex flex-col gap-3 px-6 md:flex-row md:items-end md:justify-between md:gap-6">
+      <div class="max-w-2xl">
+        <div class="section-label">Roadmap</div>
+        <h2 class="mt-3 text-[28px] font-semibold leading-[1.05] tracking-[-0.025em] md:text-[44px]">
+          Built next.
+        </h2>
+        <p class="mt-3 max-w-xl text-[15px] leading-[1.55] text-[var(--color-muted)] md:mt-4 md:text-[16px]">
+          A few of the bigger pieces shipping before launch. The rest is in the changelog.
+        </p>
+      </div>
+      <a href="#changelog" class="link-underline text-[13px] text-[var(--color-muted)] hover:text-[var(--color-fg)] md:self-end">
+        Full roadmap →
+      </a>
+    </div>
+
+    {/* MOBILE — horizontal snap carousel */}
+    <div class="no-scrollbar mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-pl-6 px-6 pb-3 md:hidden">
+      {items.map((it) => (
+        <article class="card-lift snap-start shrink-0 basis-[86%] relative overflow-hidden rounded-[14px] border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
+          <span
+            class="inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em]"
+            style={`color: ${phaseColor[it.phase]}; border-color: color-mix(in srgb, ${phaseColor[it.phase]} 35%, transparent); background: color-mix(in srgb, ${phaseColor[it.phase]} 10%, transparent);`}
+          >
+            <span class="h-1.5 w-1.5 rounded-full" style={`background: ${phaseColor[it.phase]}`}></span>
+            {it.phaseLabel}
+          </span>
+          <h3 class="mt-5 text-[20px] font-semibold leading-[1.18] tracking-[-0.015em]">{it.title}</h3>
+          <p class="mt-3 text-[14px] leading-[1.55] text-[var(--color-muted)]">{it.body}</p>
+          <div class="relative mt-6 grid h-32 place-items-center overflow-hidden rounded-[10px] border border-[var(--color-border)] bg-[var(--color-bg-2)]">
+            <div
+              class="absolute inset-0 opacity-60"
+              style={`background: radial-gradient(60% 60% at 50% 30%, color-mix(in srgb, ${phaseColor[it.phase]} 20%, transparent), transparent 70%);`}
+            ></div>
+            <Glyph glyph={it.glyph} size={88} stroke={phaseColor[it.phase]} />
+          </div>
+        </article>
+      ))}
+      <span class="shrink-0 basis-3" aria-hidden="true"></span>
+    </div>
+
+    {/* DESKTOP — three columns */}
+    <div class="hidden mt-14 px-6 md:grid md:grid-cols-3 md:gap-4">
+      {items.map((it) => (
+        <article class="card-lift group relative overflow-hidden rounded-[14px] border border-[var(--color-border)] bg-[var(--color-surface)] p-7">
+          <span
+            class="inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em]"
+            style={`color: ${phaseColor[it.phase]}; border-color: color-mix(in srgb, ${phaseColor[it.phase]} 35%, transparent); background: color-mix(in srgb, ${phaseColor[it.phase]} 10%, transparent);`}
+          >
+            <span class="h-1.5 w-1.5 rounded-full" style={`background: ${phaseColor[it.phase]}`}></span>
+            {it.phaseLabel}
+          </span>
+          <h3 class="mt-6 text-[22px] font-semibold leading-[1.18] tracking-[-0.015em]">{it.title}</h3>
+          <p class="mt-3 text-[14px] leading-[1.55] text-[var(--color-muted)]">{it.body}</p>
+          <div class="relative mt-7 grid h-40 place-items-center overflow-hidden rounded-[10px] border border-[var(--color-border)] bg-[var(--color-bg-2)]">
+            <div
+              class="absolute inset-0 opacity-60"
+              style={`background: radial-gradient(60% 60% at 50% 30%, color-mix(in srgb, ${phaseColor[it.phase]} 22%, transparent), transparent 70%);`}
+            ></div>
+            <Glyph glyph={it.glyph} size={120} stroke={phaseColor[it.phase]} />
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

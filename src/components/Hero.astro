@@ -6,15 +6,15 @@ import ActivityRow from "./product/ActivityRow.tsx";
 ---
 <section class="hero-gradient relative overflow-hidden border-b border-[var(--color-border)]">
   <div class="mx-auto max-w-[1180px] px-6 pt-20 pb-16 md:pt-28 md:pb-20">
-    <div class="fade-up max-w-3xl">
-      <span class="tag">Closed beta · School transportation</span>
-      <h1 class="mt-5 text-[34px] font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--color-fg)] md:mt-6 md:text-[68px] md:leading-[1.02] md:tracking-[-0.035em]">
+    <div class="stagger max-w-3xl">
+      <span class="tag stagger-child" style="--idx: 0">Closed beta · School transportation</span>
+      <h1 class="stagger-child mt-5 text-[34px] font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--color-fg)] md:mt-6 md:text-[68px] md:leading-[1.02] md:tracking-[-0.035em]" style="--idx: 1">
         The dispatch system school transportation runs on.
       </h1>
-      <p class="mt-5 max-w-xl text-[15px] leading-[1.55] text-[var(--color-muted)] md:mt-6 md:text-[16px]">
+      <p class="stagger-child mt-5 max-w-xl text-[15px] leading-[1.55] text-[var(--color-muted)] md:mt-6 md:text-[16px]" style="--idx: 2">
         Replace the spreadsheet, the whiteboard, and the radio with one live board your whole office shares — purpose-built for the 5 AM rush.
       </p>
-      <div class="mt-6 flex flex-col items-start gap-3 md:mt-7" id="waitlist">
+      <div class="stagger-child mt-6 flex flex-col items-start gap-3 md:mt-7" id="waitlist" style="--idx: 3">
         <WaitlistForm client:load />
         <span class="text-[12px] text-[var(--color-muted-dim)]">
           New signups are limited while we work with our first customers.
@@ -23,7 +23,7 @@ import ActivityRow from "./product/ActivityRow.tsx";
     </div>
 
     <!-- Hero product card: a framed glassy preview that's actually live DOM -->
-    <div class="fade-up mt-10 md:mt-14" style="animation-delay: 0.15s">
+    <div class="stagger-child mt-10 md:mt-14" style="--idx: 4; --stagger-step: 90ms">
       <div class="relative">
         <div
           class="absolute -inset-x-12 -top-16 -bottom-16 -z-10 opacity-70 blur-3xl"
