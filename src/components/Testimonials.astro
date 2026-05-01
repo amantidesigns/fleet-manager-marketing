@@ -1,70 +1,125 @@
 ---
-// Note: testimonial copy below is illustrative for layout. Replace with verified
-// quotes from Karl/Kathy at Northline before launch.
-const featured = {
-  quote: "Used to be a whiteboard, a spreadsheet, and three phone calls. Now it's one screen the whole office watches.",
-  name: "Operations manager",
-  role: "Northline Transportation",
-  bg: "var(--color-accent-2)",
-  fg: "#0a2e1a",
-  initial: "K",
+// Illustrative testimonial copy — replace with verified Karl/Kathy/Northline
+// quotes before launch. Anchored around the real product story (5 AM rush,
+// whiteboard-to-board, no-show coverage, pre-trip compliance).
+type Card = {
+  quote: string;
+  name: string;
+  role: string;
+  bg: string;
+  fg: string;
+  initial: string;
 };
-const secondary = {
-  quote: "I can see who's checked in without leaving my chair. The 5 AM rush isn't quiet, but it's a lot less loud.",
-  name: "AM dispatcher",
-  role: "Type III school transportation",
-  bg: "#f4eedd",
-  fg: "#1a1814",
-  initial: "K",
-};
+
+const cards: Card[] = [
+  {
+    quote: "Used to be a whiteboard, a spreadsheet, and three phone calls. Now it's one screen the whole office watches.",
+    name: "Operations manager",
+    role: "Northline Transportation",
+    bg: "var(--color-accent-2)",
+    fg: "#0a2e1a",
+    initial: "K",
+  },
+  {
+    quote: "I can see who's checked in without leaving my chair. The 5 AM rush isn't quiet, but it's a lot less loud.",
+    name: "AM dispatcher",
+    role: "Type III school transportation",
+    bg: "#f4eedd",
+    fg: "#1a1814",
+    initial: "K",
+  },
+  {
+    quote: "Coverage went from a phone tree to a single click. Standby drivers know before I do.",
+    name: "Driver coordinator",
+    role: "Type III · MN",
+    bg: "#dbe5ff",
+    fg: "#0d1f3a",
+    initial: "M",
+  },
+  {
+    quote: "First morning we used it, we filled three no-shows before the loop even started. That was the whole pitch.",
+    name: "Owner / dispatcher",
+    role: "Type III · MN",
+    bg: "#eef277",
+    fg: "#231a00",
+    initial: "N",
+  },
+];
+
+const featured = cards[0];
+const secondary = cards[1];
 ---
 <section id="customers" class="border-b border-[var(--color-border)] bg-[var(--color-bg)]">
-  <div class="mx-auto max-w-[1180px] px-6 py-16 md:py-24">
-    <div class="mb-7 flex items-end justify-between md:mb-10">
+  <div class="mx-auto max-w-[1180px] py-16 md:py-24">
+    <div class="mb-7 flex items-end justify-between px-6 md:mb-10">
       <a href="#customers" class="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-fg)]">View all →</a>
     </div>
 
-    <div class="grid grid-cols-[1.86fr_1fr] gap-2 md:gap-4">
-      <!-- Featured (lead) testimonial -->
+    {/* MOBILE — horizontal snap carousel, all cards visible by swiping */}
+    <div class="no-scrollbar md:hidden flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-pl-6 px-6 pb-3">
+      {cards.map((c) => (
+        <figure
+          class="snap-start shrink-0 basis-[86%] flex min-h-[360px] flex-col justify-between rounded-[20px] p-7"
+          style={`background: ${c.bg}; color: ${c.fg};`}
+        >
+          <blockquote class="text-[24px] font-medium leading-[1.18] tracking-[-0.015em]">
+            “{c.quote}”
+          </blockquote>
+          <figcaption class="mt-8 flex items-center gap-3 text-[13px]">
+            <span class="grid h-9 w-9 place-items-center rounded-full bg-black/15 font-semibold">
+              {c.initial}
+            </span>
+            <span class="min-w-0">
+              <div class="truncate font-semibold">{c.name}</div>
+              <div class="truncate opacity-75">{c.role}</div>
+            </span>
+          </figcaption>
+        </figure>
+      ))}
+      {/* Trailing peek so the last card has scroll-end breathing room */}
+      <span class="shrink-0 basis-3" aria-hidden="true"></span>
+    </div>
+
+    {/* DESKTOP — featured-leads-secondary asymmetric pair */}
+    <div class="hidden px-6 md:grid md:grid-cols-[1.86fr_1fr] md:gap-4">
       <figure
-        class="flex min-h-[200px] flex-col justify-between rounded-[12px] p-5 md:min-h-[420px] md:rounded-[20px] md:p-12"
+        class="flex min-h-[420px] flex-col justify-between rounded-[20px] p-12"
         style={`background: ${featured.bg}; color: ${featured.fg};`}
       >
-        <blockquote class="text-[18px] font-medium leading-[1.18] tracking-[-0.015em] md:text-[34px] md:leading-[1.15]">
+        <blockquote class="text-[36px] font-medium leading-[1.1] tracking-[-0.02em]">
           “{featured.quote}”
         </blockquote>
-        <figcaption class="mt-5 flex items-center gap-2 text-[12px] md:mt-10 md:gap-3 md:text-[14px]">
-          <span class="grid h-7 w-7 place-items-center rounded-full bg-black/15 font-semibold md:h-10 md:w-10">
+        <figcaption class="mt-10 flex items-center gap-3 text-[14px]">
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-black/15 font-semibold">
             {featured.initial}
           </span>
-          <span class="min-w-0">
-            <div class="truncate font-semibold">{featured.name}</div>
-            <div class="truncate opacity-75">{featured.role}</div>
+          <span>
+            <div class="font-semibold">{featured.name}</div>
+            <div class="opacity-75">{featured.role}</div>
           </span>
         </figcaption>
       </figure>
 
-      <!-- Secondary -->
       <figure
-        class="flex min-h-[200px] flex-col justify-between rounded-[12px] p-4 md:min-h-[420px] md:rounded-[20px] md:p-8"
+        class="flex min-h-[420px] flex-col justify-between rounded-[20px] p-8"
         style={`background: ${secondary.bg}; color: ${secondary.fg};`}
       >
-        <blockquote class="text-[14px] font-medium leading-[1.22] tracking-[-0.01em] md:text-[22px] md:leading-[1.2]">
+        <blockquote class="text-[22px] font-medium leading-[1.2] tracking-[-0.01em]">
           “{secondary.quote}”
         </blockquote>
-        <figcaption class="mt-4 flex items-center gap-2 text-[11px] md:mt-8 md:gap-3 md:text-[13px]">
-          <span class="grid h-6 w-6 place-items-center rounded-full bg-black/15 font-semibold md:h-9 md:w-9">
+        <figcaption class="mt-8 flex items-center gap-3 text-[13px]">
+          <span class="grid h-9 w-9 place-items-center rounded-full bg-black/15 font-semibold">
             {secondary.initial}
           </span>
-          <span class="min-w-0">
-            <div class="truncate font-semibold">{secondary.name}</div>
-            <div class="truncate opacity-75">{secondary.role}</div>
+          <span>
+            <div class="font-semibold">{secondary.name}</div>
+            <div class="opacity-75">{secondary.role}</div>
           </span>
         </figcaption>
       </figure>
     </div>
 
-    <div class="mt-5 flex flex-col gap-1 text-[12px] text-[var(--color-muted)] md:mt-7 md:flex-row md:items-center md:justify-between">
+    <div class="mt-5 flex flex-col gap-1 px-6 text-[12px] text-[var(--color-muted)] md:mt-7 md:flex-row md:items-center md:justify-between">
       <span>Built with Northline Transportation as our anchor customer. More to come.</span>
       <a href="#customers" class="hover:text-[var(--color-fg)]">Customer stories →</a>
     </div>

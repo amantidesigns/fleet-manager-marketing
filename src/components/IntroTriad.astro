@@ -1,25 +1,26 @@
 ---
-const cards = [
+type Glyph = "stack" | "pulse" | "sun";
+const cards: { label: string; body: string; glyph: Glyph }[] = [
   {
     label: "Built for dispatch",
     body: "Designed around the real job: drivers, routes, no-shows, coverage. Not bolted onto a generic CRM.",
-    glyph: "stack" as const,
+    glyph: "stack",
   },
   {
     label: "Powered by real-time",
     body: "Every keystroke syncs to every screen in the office in under 50ms. The whiteboard is finally live.",
-    glyph: "pulse" as const,
+    glyph: "pulse",
   },
   {
     label: "Made for 5 AM",
     body: "OLED-friendly dark UI, oversized hit targets, keyboard-first flows. Built for cold mornings under pressure.",
-    glyph: "sun" as const,
+    glyph: "sun",
   },
 ];
 ---
 <section class="border-b border-[var(--color-border)] bg-[var(--color-bg)]" id="product">
-  <div class="mx-auto max-w-[1180px] px-6 py-16 md:py-24">
-    <div class="max-w-3xl">
+  <div class="mx-auto max-w-[1180px] py-16 md:py-24">
+    <div class="max-w-3xl px-6">
       <h2 class="text-[30px] font-semibold leading-[1.05] tracking-[-0.025em] md:text-[48px]">
         A new species of dispatch tool.
       </h2>
@@ -28,20 +29,21 @@ const cards = [
       </p>
     </div>
 
-    <div class="mt-10 grid gap-4 md:mt-16 md:grid-cols-3">
+    {/* MOBILE — horizontal snap carousel */}
+    <div class="no-scrollbar mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-pl-6 px-6 pb-3 md:hidden">
       {cards.map((c) => (
-        <div class="group relative overflow-hidden rounded-[14px] border border-[var(--color-border)] bg-[var(--color-surface)] p-5 md:p-7">
+        <article class="snap-start shrink-0 basis-[86%] relative overflow-hidden rounded-[14px] border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
           <div
             class="pointer-events-none absolute inset-x-0 top-0 h-px opacity-50"
             style="background: linear-gradient(to right, transparent, var(--color-border-3), transparent);"
           ></div>
-          <div class="relative mb-6 grid h-32 place-items-center overflow-hidden rounded-[12px] border border-[var(--color-border)] bg-[var(--color-bg-2)] md:mb-8 md:h-44">
+          <div class="relative mb-6 grid h-36 place-items-center overflow-hidden rounded-[12px] border border-[var(--color-border)] bg-[var(--color-bg-2)]">
             <div
               class="absolute inset-0 opacity-60"
               style="background: radial-gradient(60% 60% at 50% 30%, rgba(46,134,193,0.12), transparent 70%);"
             ></div>
             {c.glyph === "stack" && (
-              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[88px] w-[88px] md:h-[120px] md:w-[120px]">
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[96px] w-[96px]">
                 <path d="M32 8 L56 20 L32 32 L8 20 Z" opacity="0.95" />
                 <path d="M8 28 L32 40 L56 28" opacity="0.6" />
                 <path d="M8 36 L32 48 L56 36" opacity="0.35" />
@@ -49,7 +51,7 @@ const cards = [
               </svg>
             )}
             {c.glyph === "pulse" && (
-              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[88px] w-[88px] md:h-[120px] md:w-[120px]">
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[96px] w-[96px]">
                 <circle cx="32" cy="32" r="26" opacity="0.18" />
                 <circle cx="32" cy="32" r="20" opacity="0.35" />
                 <circle cx="32" cy="32" r="12" opacity="0.65" />
@@ -57,7 +59,7 @@ const cards = [
               </svg>
             )}
             {c.glyph === "sun" && (
-              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent-2)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[88px] w-[88px] md:h-[120px] md:w-[120px]">
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent-2)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[96px] w-[96px]">
                 <circle cx="32" cy="42" r="11" opacity="0.95" />
                 <path d="M19 42 H6 M58 42 H45 M32 28 V14 M14 24 L23 33 M50 24 L41 33" />
                 <path d="M2 54 H62" opacity="0.35" />
@@ -65,9 +67,54 @@ const cards = [
               </svg>
             )}
           </div>
-          <div class="text-[15px] font-semibold tracking-[-0.01em] md:text-[17px]">{c.label}</div>
-          <p class="mt-2 text-[13px] leading-[1.55] text-[var(--color-muted)] md:mt-2.5 md:text-[14px]">{c.body}</p>
-        </div>
+          <div class="text-[16px] font-semibold tracking-[-0.01em]">{c.label}</div>
+          <p class="mt-2 text-[14px] leading-[1.55] text-[var(--color-muted)]">{c.body}</p>
+        </article>
+      ))}
+      <span class="shrink-0 basis-3" aria-hidden="true"></span>
+    </div>
+
+    {/* DESKTOP — three columns */}
+    <div class="hidden mt-16 px-6 md:grid md:gap-4 md:grid-cols-3">
+      {cards.map((c) => (
+        <article class="group relative overflow-hidden rounded-[14px] border border-[var(--color-border)] bg-[var(--color-surface)] p-7">
+          <div
+            class="pointer-events-none absolute inset-x-0 top-0 h-px opacity-50"
+            style="background: linear-gradient(to right, transparent, var(--color-border-3), transparent);"
+          ></div>
+          <div class="relative mb-8 grid h-44 place-items-center overflow-hidden rounded-[12px] border border-[var(--color-border)] bg-[var(--color-bg-2)]">
+            <div
+              class="absolute inset-0 opacity-60"
+              style="background: radial-gradient(60% 60% at 50% 30%, rgba(46,134,193,0.12), transparent 70%);"
+            ></div>
+            {c.glyph === "stack" && (
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[120px] w-[120px]">
+                <path d="M32 8 L56 20 L32 32 L8 20 Z" opacity="0.95" />
+                <path d="M8 28 L32 40 L56 28" opacity="0.6" />
+                <path d="M8 36 L32 48 L56 36" opacity="0.35" />
+                <path d="M8 44 L32 56 L56 44" opacity="0.18" />
+              </svg>
+            )}
+            {c.glyph === "pulse" && (
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[120px] w-[120px]">
+                <circle cx="32" cy="32" r="26" opacity="0.18" />
+                <circle cx="32" cy="32" r="20" opacity="0.35" />
+                <circle cx="32" cy="32" r="12" opacity="0.65" />
+                <path d="M6 32 H22 L26 22 L34 42 L38 32 H58" stroke-width="1.25" />
+              </svg>
+            )}
+            {c.glyph === "sun" && (
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent-2)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[120px] w-[120px]">
+                <circle cx="32" cy="42" r="11" opacity="0.95" />
+                <path d="M19 42 H6 M58 42 H45 M32 28 V14 M14 24 L23 33 M50 24 L41 33" />
+                <path d="M2 54 H62" opacity="0.35" />
+                <path d="M0 50 H64" opacity="0.15" />
+              </svg>
+            )}
+          </div>
+          <div class="text-[17px] font-semibold tracking-[-0.01em]">{c.label}</div>
+          <p class="mt-2.5 text-[14px] leading-[1.55] text-[var(--color-muted)]">{c.body}</p>
+        </article>
       ))}
     </div>
   </div>
