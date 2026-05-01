@@ -17,7 +17,7 @@ import DriverTablet from "./product/DriverTablet.tsx";
     <FeatureRow
       eyebrow="Companion app"
       title="The board updates from the van itself."
-      body="A tablet PWA, mounted in every van. Drivers run pre-trip with photos, check in, ack relay notes, and clear routes. Every tap lands on the dispatcher's screen the same second. The radio gets quiet."
+      body="Every van has a tablet running our driver app, and that's where most of the morning happens now. Drivers run pre-trip with photos, check in, acknowledge relay notes, and clear routes from it, and every one of those actions lands on the dispatcher's screen the same second. Most mornings, the radio actually gets quiet."
     >
       <DriverTablet client:load />
     </FeatureRow>
@@ -25,7 +25,7 @@ import DriverTablet from "./product/DriverTablet.tsx";
     <FeatureRow
       eyebrow="Operations"
       title="Run the morning from one screen."
-      body="Check-ins, status changes, and standby relays — driven by the people calling in, not the people answering the radio. The board updates before the second call lands."
+      body="Check-ins, status changes, and standby relays update the moment somebody acts on them, whether that's a driver in a van or a dispatcher at her desk. You stop answering the radio just to write things down; the board already knows."
       reverse
     >
       <DispatchTable client:load />
@@ -34,7 +34,7 @@ import DriverTablet from "./product/DriverTablet.tsx";
     <FeatureRow
       eyebrow="Routes"
       title="Plan every shift from one screen."
-      body="Routes grouped by district, color-coded the way dispatchers already think. Reassign a driver and every screen in the office sees it before the next radio call."
+      body="Routes are grouped by district and color-coded the way dispatchers already think about them. When you reassign a driver, every screen in the office picks it up before the next radio call, so nobody has to remember to tell anyone."
     >
       <div class="grid grid-cols-2 gap-3">
         <RouteCard client:load routeNumber="AH-12" district="anoka" driver="Kathy R." vehicle="V-101" status="Covered" />
@@ -46,8 +46,8 @@ import DriverTablet from "./product/DriverTablet.tsx";
 
     <FeatureRow
       eyebrow="Coverage"
-      title="Fill no-shows in seconds, not phone calls."
-      body="Standby drivers surface automatically. One click reassigns the route, notifies the right people, and writes the audit trail. So at 5 PM you don't have to remember what you decided at 5 AM."
+      title="Cover a no-show before the second call lands."
+      body="When a driver calls in, eligible standby drivers show up at the top of the list, sorted by the district that needs them most. One click reassigns the route and writes the audit trail, so when somebody asks at 5 PM you can still tell them what you decided at 4:55."
       reverse
     >
       <CheckInGrid client:load />
@@ -55,16 +55,16 @@ import DriverTablet from "./product/DriverTablet.tsx";
 
     <FeatureRow
       eyebrow="Compliance"
-      title="Pre-trip from the cab. Audit-ready by 6 AM."
-      body="Drivers run the 33-item check from the tablet — photos and all. Defects route straight to compliance and maintenance. When DOT walks in, you don't dig through binders. You click."
+      title="Pre-trip in the cab, audit-ready before the buses roll."
+      body="Drivers run the 33-item check from the tablet, photos and all, and any defect they catch routes straight to compliance and maintenance the same second. When DOT walks in, all of it is one click away from the desk."
     >
       <ComplianceDiff client:load />
     </FeatureRow>
 
     <FeatureRow
       eyebrow="Detail"
-      title="Every driver, van, and route. One click away."
-      body="Slide-out timelines for everyone and everything — activity, assignments, notes, history. The kind of context that used to live in someone's head."
+      title="Every driver, van, and route is one click away."
+      body="Slide-out timelines for everyone and everything, with activity, assignments, notes, and history laid out in the order they happened. It's the kind of context that used to live in somebody's head."
       reverse
     >
       <DrawerPreview client:load />

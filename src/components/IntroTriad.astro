@@ -3,22 +3,22 @@ type Glyph = "device" | "pulse" | "checklist" | "attendance";
 const cards: { label: string; body: string; glyph: Glyph }[] = [
   {
     label: "Driver companion app",
-    body: "A tablet in every van. Drivers check in, run pre-trip with photos, ack relays, and clear routes. Every tap lands on the office board the same second.",
+    body: "Every van has a tablet running our driver app. Drivers use it to check in, run pre-trip with photos, acknowledge relay notes, and clear routes when the loop is done, and the office board updates the second they tap anything.",
     glyph: "device",
   },
   {
     label: "Live dispatch board",
-    body: "One-tap check-ins, standby relays, and status changes. Every dispatcher and the office TV show the same picture, synced in 50ms.",
+    body: "One-tap check-ins, standby relays, and status changes update for every dispatcher and the office TV at the same time, with a half-second lag at most.",
     glyph: "pulse",
   },
   {
     label: "Automated pre-trip",
-    body: "Drivers tap through 33 items from the cab — photos and all. Defects route to compliance and maintenance instantly. The binder stays in the drawer.",
+    body: "Drivers tap through the 33-item check from the cab, photos and all, and the result lands in compliance and maintenance before the engine's warm. The binder ends up sitting there.",
     glyph: "checklist",
   },
   {
     label: "Attendance tracking",
-    body: "Daily, weekly, monthly attendance per driver. No-show patterns. On-time check-in rates. A district report is two clicks — for payroll, audits, DOT.",
+    body: "Daily, weekly, and monthly attendance per driver, with the no-show patterns and on-time rates that owners actually ask about. A district report takes two clicks, whether it's for payroll, an audit, or DOT.",
     glyph: "attendance",
   },
 ];
@@ -30,7 +30,7 @@ const cards: { label: string; body: string; glyph: Glyph }[] = [
         Built for how dispatch actually runs.
       </h2>
       <p class="mt-4 max-w-2xl text-[15px] leading-[1.55] text-[var(--color-muted)] md:mt-5 md:text-[17px]">
-        Drivers tap. The board moves. The office watches one screen — for Type III school transportation, not enterprise software adapted down.
+        Drivers tap from a tablet in the van and the board updates the second they do. The office sees one screen instead of three, and the morning rush stops feeling quite like one.
       </p>
     </div>
 
