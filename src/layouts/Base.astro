@@ -4,38 +4,93 @@ import "../styles/global.css";
 type Props = {
   title?: string;
   description?: string;
+  pathname?: string;
 };
+
+const SITE_URL = "https://fleet-manager-marketing.vercel.app";
+const SITE_NAME = "Fleet Manager";
 
 const {
   title = "Fleet Manager — Real-time dispatch for school transportation",
-  description = "The dispatch system school transportation runs on. Replace spreadsheets and radios with one live board your whole office shares.",
+  description = "Replace the spreadsheet, the whiteboard, and the radio with one live board your whole office shares — purpose-built for the 5 AM rush.",
+  pathname = Astro.url.pathname,
 } = Astro.props;
+
+const canonical = new URL(pathname, SITE_URL).toString();
+const ogImage = new URL("/og.png", SITE_URL).toString();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Fleet Manager",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  description,
+  url: SITE_URL,
+  image: ogImage,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+    availability: "https://schema.org/PreOrder",
+  },
+  audience: {
+    "@type": "BusinessAudience",
+    audienceType: "Type III school transportation operators",
+  },
+};
 ---
 
 <!doctype html>
 <html lang="en">
   <script is:inline>
-    // Set early so the .reveal CSS rule activates before first paint, avoiding FOUC.
     document.documentElement.classList.add("js");
   </script>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0a0a0b" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <title>{title}</title>
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Fleet Manager — the dispatch system school transportation runs on." />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Fleet Manager — the dispatch system school transportation runs on." />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
     <slot />
     <script>
-      // Reveal targets: those near or above the fold fade in immediately on load;
-      // ones further below get progressively-staggered reveals as they enter the
-      // viewport. Robust to fullpage screenshots and SEO crawlers (CSS gates on
-      // html.js, which we set via the inline boot script).
       const targets = document.querySelectorAll<HTMLElement>(".reveal");
       if (targets.length) {
         const io = new IntersectionObserver(
@@ -47,14 +102,9 @@ const {
               }
             }
           },
-          // Generous bottom rootMargin so elements just-below-the-fold are caught
-          // on initial pass — prevents long blank stretches before user scrolls.
           { rootMargin: "0px 0px 25% 0px", threshold: 0 }
         );
         targets.forEach((el) => io.observe(el));
-
-        // Safety net: anything not yet revealed after 1s gets revealed anyway.
-        // Covers tools that snapshot the DOM without scrolling.
         window.setTimeout(() => {
           targets.forEach((el) => el.classList.add("is-visible"));
         }, 1000);
