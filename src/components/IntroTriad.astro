@@ -1,20 +1,25 @@
 ---
-type Glyph = "stack" | "pulse" | "sun";
+type Glyph = "device" | "pulse" | "checklist" | "attendance";
 const cards: { label: string; body: string; glyph: Glyph }[] = [
   {
-    label: "Built for dispatch",
-    body: "Designed around the real job: drivers, routes, no-shows, coverage. Not bolted onto a generic CRM.",
-    glyph: "stack",
+    label: "Driver companion app",
+    body: "A tablet in every van. Drivers check in, run pre-trip with photos, acknowledge relay notes, and clear routes — every action lands on the office board the same second.",
+    glyph: "device",
   },
   {
-    label: "Powered by real-time",
-    body: "Every keystroke syncs to every screen in the office in under 50ms. The whiteboard is finally live.",
+    label: "Live dispatch board",
+    body: "One-tap check-ins. Standby relays. Status changes. Every dispatcher and the office TV see the same live picture, synced in under 50ms.",
     glyph: "pulse",
   },
   {
-    label: "Made for 5 AM",
-    body: "OLED-friendly dark UI, oversized hit targets, keyboard-first flows. Built for cold mornings under pressure.",
-    glyph: "sun",
+    label: "Automated pre-trip",
+    body: "33-item inspection from the driver's tablet. Photo defects flow straight to compliance and maintenance. No paper, no Tally email scraping, no binder.",
+    glyph: "checklist",
+  },
+  {
+    label: "Attendance tracking",
+    body: "Per-driver attendance, daily through monthly. No-show patterns. On-time check-in rates. Pull a district report in two clicks — payroll, audits, DOT.",
+    glyph: "attendance",
   },
 ];
 ---
@@ -25,11 +30,11 @@ const cards: { label: string; body: string; glyph: Glyph }[] = [
         A new species of dispatch tool.
       </h2>
       <p class="mt-4 max-w-2xl text-[15px] leading-[1.55] text-[var(--color-muted)] md:mt-5 md:text-[17px]">
-        Purpose-built for small fleets that move people, not packages. Fleet Manager replaces three tools and a binder with one operating picture your whole office sees the same way.
+        Drivers check in from the van. Dispatchers see it the same second. The whole office watches one board — built for Type III school transportation, not adapted from enterprise software.
       </p>
     </div>
 
-    {/* MOBILE — horizontal snap carousel */}
+    {/* MOBILE — horizontal snap carousel (4 cards) */}
     <div class="no-scrollbar mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-pl-6 px-6 pb-3 md:hidden">
       {cards.map((c) => (
         <article class="card-lift snap-start shrink-0 basis-[86%] relative overflow-hidden rounded-[14px] border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
@@ -42,28 +47,50 @@ const cards: { label: string; body: string; glyph: Glyph }[] = [
               class="absolute inset-0 opacity-60"
               style="background: radial-gradient(60% 60% at 50% 30%, rgba(46,134,193,0.12), transparent 70%);"
             ></div>
-            {c.glyph === "stack" && (
-              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[96px] w-[96px]">
-                <path d="M32 8 L56 20 L32 32 L8 20 Z" opacity="0.95" />
-                <path d="M8 28 L32 40 L56 28" opacity="0.6" />
-                <path d="M8 36 L32 48 L56 36" opacity="0.35" />
-                <path d="M8 44 L32 56 L56 44" opacity="0.18" />
+            {c.glyph === "device" && (
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[88px] w-[88px]">
+                <rect x="14" y="10" width="36" height="44" rx="4" opacity="0.95" />
+                <line x1="20" y1="18" x2="44" y2="18" opacity="0.55" />
+                <line x1="20" y1="24" x2="36" y2="24" opacity="0.4" />
+                <rect x="20" y="30" width="24" height="12" rx="1.5" opacity="0.65" />
+                <circle cx="32" cy="50" r="1.6" fill="var(--color-accent)" stroke="none" />
+                <path d="M22 6 Q32 2 42 6" opacity="0.6" />
+                <path d="M26 4 Q32 1 38 4" opacity="0.35" />
               </svg>
             )}
             {c.glyph === "pulse" && (
-              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[96px] w-[96px]">
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[88px] w-[88px]">
                 <circle cx="32" cy="32" r="26" opacity="0.18" />
                 <circle cx="32" cy="32" r="20" opacity="0.35" />
                 <circle cx="32" cy="32" r="12" opacity="0.65" />
                 <path d="M6 32 H22 L26 22 L34 42 L38 32 H58" stroke-width="1.25" />
               </svg>
             )}
-            {c.glyph === "sun" && (
-              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent-2)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[96px] w-[96px]">
-                <circle cx="32" cy="42" r="11" opacity="0.95" />
-                <path d="M19 42 H6 M58 42 H45 M32 28 V14 M14 24 L23 33 M50 24 L41 33" />
-                <path d="M2 54 H62" opacity="0.35" />
-                <path d="M0 50 H64" opacity="0.15" />
+            {c.glyph === "checklist" && (
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent-2)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[88px] w-[88px]">
+                <rect x="14" y="10" width="36" height="44" rx="4" opacity="0.95" />
+                <rect x="22" y="6" width="20" height="8" rx="2" opacity="0.85" />
+                <path d="M20 22 L23 25 L27 19" stroke-width="1.4" />
+                <line x1="30" y1="22" x2="44" y2="22" opacity="0.55" />
+                <path d="M20 32 L23 35 L27 29" stroke-width="1.4" />
+                <line x1="30" y1="32" x2="44" y2="32" opacity="0.55" />
+                <circle cx="22" cy="42" r="2.2" opacity="0.4" />
+                <line x1="30" y1="42" x2="44" y2="42" opacity="0.35" />
+              </svg>
+            )}
+            {c.glyph === "attendance" && (
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[88px] w-[88px]">
+                <line x1="6" y1="50" x2="58" y2="50" opacity="0.7" />
+                <line x1="6" y1="50" x2="6" y2="14" opacity="0.4" />
+                <rect x="11" y="34" width="7" height="16" opacity="0.85" />
+                <rect x="22" y="26" width="7" height="24" opacity="0.7" />
+                <rect x="33" y="22" width="7" height="28" opacity="0.55" />
+                <rect x="44" y="16" width="7" height="34" opacity="0.4" />
+                <path d="M14.5 32 L25.5 24 L36.5 20 L47.5 14" stroke-width="1.25" stroke="var(--color-accent)" />
+                <circle cx="14.5" cy="32" r="1.8" fill="var(--color-accent)" stroke="none" />
+                <circle cx="25.5" cy="24" r="1.8" fill="var(--color-accent)" stroke="none" />
+                <circle cx="36.5" cy="20" r="1.8" fill="var(--color-accent)" stroke="none" />
+                <circle cx="47.5" cy="14" r="1.8" fill="var(--color-accent)" stroke="none" />
               </svg>
             )}
           </div>
@@ -74,25 +101,28 @@ const cards: { label: string; body: string; glyph: Glyph }[] = [
       <span class="shrink-0 basis-3" aria-hidden="true"></span>
     </div>
 
-    {/* DESKTOP — three columns */}
-    <div class="hidden mt-16 px-6 md:grid md:gap-4 md:grid-cols-3">
+    {/* DESKTOP — 2x2 grid */}
+    <div class="hidden mt-14 px-6 md:grid md:grid-cols-2 md:gap-4">
       {cards.map((c) => (
         <article class="card-lift group relative overflow-hidden rounded-[14px] border border-[var(--color-border)] bg-[var(--color-surface)] p-7">
           <div
             class="pointer-events-none absolute inset-x-0 top-0 h-px opacity-50"
             style="background: linear-gradient(to right, transparent, var(--color-border-3), transparent);"
           ></div>
-          <div class="relative mb-8 grid h-44 place-items-center overflow-hidden rounded-[12px] border border-[var(--color-border)] bg-[var(--color-bg-2)]">
+          <div class="relative mb-7 grid h-44 place-items-center overflow-hidden rounded-[12px] border border-[var(--color-border)] bg-[var(--color-bg-2)]">
             <div
               class="absolute inset-0 opacity-60"
               style="background: radial-gradient(60% 60% at 50% 30%, rgba(46,134,193,0.12), transparent 70%);"
             ></div>
-            {c.glyph === "stack" && (
+            {c.glyph === "device" && (
               <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[120px] w-[120px]">
-                <path d="M32 8 L56 20 L32 32 L8 20 Z" opacity="0.95" />
-                <path d="M8 28 L32 40 L56 28" opacity="0.6" />
-                <path d="M8 36 L32 48 L56 36" opacity="0.35" />
-                <path d="M8 44 L32 56 L56 44" opacity="0.18" />
+                <rect x="14" y="10" width="36" height="44" rx="4" opacity="0.95" />
+                <line x1="20" y1="18" x2="44" y2="18" opacity="0.55" />
+                <line x1="20" y1="24" x2="36" y2="24" opacity="0.4" />
+                <rect x="20" y="30" width="24" height="12" rx="1.5" opacity="0.65" />
+                <circle cx="32" cy="50" r="1.6" fill="var(--color-accent)" stroke="none" />
+                <path d="M22 6 Q32 2 42 6" opacity="0.6" />
+                <path d="M26 4 Q32 1 38 4" opacity="0.35" />
               </svg>
             )}
             {c.glyph === "pulse" && (
@@ -103,17 +133,36 @@ const cards: { label: string; body: string; glyph: Glyph }[] = [
                 <path d="M6 32 H22 L26 22 L34 42 L38 32 H58" stroke-width="1.25" />
               </svg>
             )}
-            {c.glyph === "sun" && (
+            {c.glyph === "checklist" && (
               <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent-2)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[120px] w-[120px]">
-                <circle cx="32" cy="42" r="11" opacity="0.95" />
-                <path d="M19 42 H6 M58 42 H45 M32 28 V14 M14 24 L23 33 M50 24 L41 33" />
-                <path d="M2 54 H62" opacity="0.35" />
-                <path d="M0 50 H64" opacity="0.15" />
+                <rect x="14" y="10" width="36" height="44" rx="4" opacity="0.95" />
+                <rect x="22" y="6" width="20" height="8" rx="2" opacity="0.85" />
+                <path d="M20 22 L23 25 L27 19" stroke-width="1.4" />
+                <line x1="30" y1="22" x2="44" y2="22" opacity="0.55" />
+                <path d="M20 32 L23 35 L27 29" stroke-width="1.4" />
+                <line x1="30" y1="32" x2="44" y2="32" opacity="0.55" />
+                <circle cx="22" cy="42" r="2.2" opacity="0.4" />
+                <line x1="30" y1="42" x2="44" y2="42" opacity="0.35" />
+              </svg>
+            )}
+            {c.glyph === "attendance" && (
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[120px] w-[120px]">
+                <line x1="6" y1="50" x2="58" y2="50" opacity="0.7" />
+                <line x1="6" y1="50" x2="6" y2="14" opacity="0.4" />
+                <rect x="11" y="34" width="7" height="16" opacity="0.85" />
+                <rect x="22" y="26" width="7" height="24" opacity="0.7" />
+                <rect x="33" y="22" width="7" height="28" opacity="0.55" />
+                <rect x="44" y="16" width="7" height="34" opacity="0.4" />
+                <path d="M14.5 32 L25.5 24 L36.5 20 L47.5 14" stroke-width="1.25" stroke="var(--color-accent)" />
+                <circle cx="14.5" cy="32" r="1.8" fill="var(--color-accent)" stroke="none" />
+                <circle cx="25.5" cy="24" r="1.8" fill="var(--color-accent)" stroke="none" />
+                <circle cx="36.5" cy="20" r="1.8" fill="var(--color-accent)" stroke="none" />
+                <circle cx="47.5" cy="14" r="1.8" fill="var(--color-accent)" stroke="none" />
               </svg>
             )}
           </div>
-          <div class="text-[17px] font-semibold tracking-[-0.01em]">{c.label}</div>
-          <p class="mt-2.5 text-[14px] leading-[1.55] text-[var(--color-muted)]">{c.body}</p>
+          <div class="text-[18px] font-semibold tracking-[-0.01em]">{c.label}</div>
+          <p class="mt-3 text-[14px] leading-[1.55] text-[var(--color-muted)]">{c.body}</p>
         </article>
       ))}
     </div>
