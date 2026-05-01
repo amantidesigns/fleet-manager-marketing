@@ -3,22 +3,22 @@ type Glyph = "device" | "pulse" | "checklist" | "attendance";
 const cards: { label: string; body: string; glyph: Glyph }[] = [
   {
     label: "Driver companion app",
-    body: "A tablet in every van. Drivers check in, run pre-trip with photos, acknowledge relay notes, and clear routes — every action lands on the office board the same second.",
+    body: "A tablet in every van. Drivers check in, run pre-trip with photos, ack relays, and clear routes. Every tap lands on the office board the same second.",
     glyph: "device",
   },
   {
     label: "Live dispatch board",
-    body: "One-tap check-ins. Standby relays. Status changes. Every dispatcher and the office TV see the same live picture, synced in under 50ms.",
+    body: "One-tap check-ins, standby relays, and status changes. Every dispatcher and the office TV show the same picture, synced in 50ms.",
     glyph: "pulse",
   },
   {
     label: "Automated pre-trip",
-    body: "33-item inspection from the driver's tablet. Photo defects flow straight to compliance and maintenance. No paper, no Tally email scraping, no binder.",
+    body: "Drivers tap through 33 items from the cab — photos and all. Defects route to compliance and maintenance instantly. The binder stays in the drawer.",
     glyph: "checklist",
   },
   {
     label: "Attendance tracking",
-    body: "Per-driver attendance, daily through monthly. No-show patterns. On-time check-in rates. Pull a district report in two clicks — payroll, audits, DOT.",
+    body: "Daily, weekly, monthly attendance per driver. No-show patterns. On-time check-in rates. A district report is two clicks — for payroll, audits, DOT.",
     glyph: "attendance",
   },
 ];
@@ -27,10 +27,10 @@ const cards: { label: string; body: string; glyph: Glyph }[] = [
   <div class="mx-auto max-w-[1180px] py-16 md:py-24">
     <div class="max-w-3xl px-6">
       <h2 class="text-[30px] font-semibold leading-[1.05] tracking-[-0.025em] md:text-[48px]">
-        A new species of dispatch tool.
+        Built for how dispatch actually runs.
       </h2>
       <p class="mt-4 max-w-2xl text-[15px] leading-[1.55] text-[var(--color-muted)] md:mt-5 md:text-[17px]">
-        Drivers check in from the van. Dispatchers see it the same second. The whole office watches one board — built for Type III school transportation, not adapted from enterprise software.
+        Drivers tap. The board moves. The office watches one screen — for Type III school transportation, not enterprise software adapted down.
       </p>
     </div>
 

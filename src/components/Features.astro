@@ -17,15 +17,15 @@ import DriverTablet from "./product/DriverTablet.tsx";
     <FeatureRow
       eyebrow="Companion app"
       title="The board updates from the van itself."
-      body="A tablet PWA in every van. Drivers run pre-trip with photos, check in, acknowledge relay notes, and clear routes — every action lands on the dispatcher's screen the same second. No more radio backlog at 5:42 AM."
+      body="A tablet PWA, mounted in every van. Drivers run pre-trip with photos, check in, ack relay notes, and clear routes. Every tap lands on the dispatcher's screen the same second. The radio gets quiet."
     >
       <DriverTablet client:load />
     </FeatureRow>
 
     <FeatureRow
       eyebrow="Operations"
-      title="Make dispatch self-driving."
-      body="One-tap check-ins, status changes, and standby relays — driven by the people calling in, not the people answering the radio. The board updates itself."
+      title="Run the morning from one screen."
+      body="Check-ins, status changes, and standby relays — driven by the people calling in, not the people answering the radio. The board updates before the second call lands."
       reverse
     >
       <DispatchTable client:load />
@@ -33,8 +33,8 @@ import DriverTablet from "./product/DriverTablet.tsx";
 
     <FeatureRow
       eyebrow="Routes"
-      title="Plan every shift in one place."
-      body="Routes grouped by district, color-coded the way your dispatchers already think. Reassign a driver in-app and every screen in the office sees it before the next radio call."
+      title="Plan every shift from one screen."
+      body="Routes grouped by district, color-coded the way dispatchers already think. Reassign a driver and every screen in the office sees it before the next radio call."
     >
       <div class="grid grid-cols-2 gap-3">
         <RouteCard client:load routeNumber="AH-12" district="anoka" driver="Kathy R." vehicle="V-101" status="Covered" />
@@ -47,7 +47,7 @@ import DriverTablet from "./product/DriverTablet.tsx";
     <FeatureRow
       eyebrow="Coverage"
       title="Fill no-shows in seconds, not phone calls."
-      body="Standby drivers surface automatically. One click reassigns a route, notifies the right people, and writes the activity log so you don't have to remember at 5 PM what you decided at 5 AM."
+      body="Standby drivers surface automatically. One click reassigns the route, notifies the right people, and writes the audit trail. So at 5 PM you don't have to remember what you decided at 5 AM."
       reverse
     >
       <CheckInGrid client:load />
@@ -55,16 +55,16 @@ import DriverTablet from "./product/DriverTablet.tsx";
 
     <FeatureRow
       eyebrow="Compliance"
-      title="Pre-trip from the van. Audit-ready by 6 AM."
-      body="Drivers run the 33-item check on the tablet — photos and all. Defects route straight to compliance and maintenance. When DOT walks in, you don't dig through binders. You click."
+      title="Pre-trip from the cab. Audit-ready by 6 AM."
+      body="Drivers run the 33-item check from the tablet — photos and all. Defects route straight to compliance and maintenance. When DOT walks in, you don't dig through binders. You click."
     >
       <ComplianceDiff client:load />
     </FeatureRow>
 
     <FeatureRow
       eyebrow="Detail"
-      title="Every entity, one click away."
-      body="Drivers, vehicles, routes — each with its own slide-out timeline of activity, assignments, and notes. The kind of context that used to live only in someone's head."
+      title="Every driver, van, and route. One click away."
+      body="Slide-out timelines for everyone and everything — activity, assignments, notes, history. The kind of context that used to live in someone's head."
       reverse
     >
       <DrawerPreview client:load />
