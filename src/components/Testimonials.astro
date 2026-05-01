@@ -1,45 +1,72 @@
 ---
 // Note: testimonial copy below is illustrative for layout. Replace with verified
-// quotes from Karl/Kathy at Northline before launch (mark as "DRAFT — pending verification").
-const testimonials = [
-  {
-    quote: "Used to be a whiteboard, a spreadsheet, and three phone calls. Now it's one screen the whole office watches.",
-    name: "Operations manager",
-    role: "Type III school transportation",
-    bg: "var(--color-accent-2)",
-    fg: "#0a2e1a",
-  },
-  {
-    quote: "I can see who's checked in without leaving my chair. The 5 AM rush isn't quiet, but it's a lot less loud.",
-    name: "AM dispatcher",
-    role: "Type III school transportation",
-    bg: "#f4eedd",
-    fg: "#1a1814",
-  },
-];
+// quotes from Karl/Kathy at Northline before launch.
+const featured = {
+  quote: "Used to be a whiteboard, a spreadsheet, and three phone calls. Now it's one screen the whole office watches.",
+  name: "Operations manager",
+  role: "Northline Transportation",
+  bg: "var(--color-accent-2)",
+  fg: "#0a2e1a",
+  initial: "K",
+};
+const secondary = {
+  quote: "I can see who's checked in without leaving my chair. The 5 AM rush isn't quiet, but it's a lot less loud.",
+  name: "AM dispatcher",
+  role: "Type III school transportation",
+  bg: "#f4eedd",
+  fg: "#1a1814",
+  initial: "K",
+};
 ---
 <section id="customers" class="border-b border-[var(--color-border)] bg-[var(--color-bg)]">
   <div class="mx-auto max-w-[1180px] px-6 py-24">
-    <div class="grid gap-4 md:grid-cols-2">
-      {testimonials.map((t) => (
-        <figure
-          class="rounded-[18px] p-8"
-          style={`background: ${t.bg}; color: ${t.fg};`}
-        >
-          <blockquote class="text-[20px] font-medium leading-snug tracking-[-0.01em] md:text-[22px]">
-            “{t.quote}”
-          </blockquote>
-          <figcaption class="mt-8 flex items-center gap-3 text-[13px]">
-            <span class="grid h-9 w-9 place-items-center rounded-full bg-black/15 font-semibold">
-              {t.name.charAt(0)}
-            </span>
-            <span>
-              <div class="font-semibold">{t.name}</div>
-              <div class="opacity-70">{t.role}</div>
-            </span>
-          </figcaption>
-        </figure>
-      ))}
+    <div class="mb-10 flex items-end justify-between">
+      <a href="#customers" class="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-fg)]">View all →</a>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-[1.86fr_1fr]">
+      <!-- Featured (lead) testimonial -->
+      <figure
+        class="flex min-h-[420px] flex-col justify-between rounded-[20px] p-10 md:p-12"
+        style={`background: ${featured.bg}; color: ${featured.fg};`}
+      >
+        <blockquote class="text-[28px] font-medium leading-[1.15] tracking-[-0.015em] md:text-[34px]">
+          “{featured.quote}”
+        </blockquote>
+        <figcaption class="mt-10 flex items-center gap-3 text-[14px]">
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-black/15 font-semibold">
+            {featured.initial}
+          </span>
+          <span>
+            <div class="font-semibold">{featured.name}</div>
+            <div class="opacity-75">{featured.role}</div>
+          </span>
+        </figcaption>
+      </figure>
+
+      <!-- Secondary -->
+      <figure
+        class="flex min-h-[420px] flex-col justify-between rounded-[20px] p-8"
+        style={`background: ${secondary.bg}; color: ${secondary.fg};`}
+      >
+        <blockquote class="text-[20px] font-medium leading-[1.2] tracking-[-0.01em] md:text-[22px]">
+          “{secondary.quote}”
+        </blockquote>
+        <figcaption class="mt-8 flex items-center gap-3 text-[13px]">
+          <span class="grid h-9 w-9 place-items-center rounded-full bg-black/15 font-semibold">
+            {secondary.initial}
+          </span>
+          <span>
+            <div class="font-semibold">{secondary.name}</div>
+            <div class="opacity-75">{secondary.role}</div>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="mt-7 flex items-center justify-between text-[12px] text-[var(--color-muted)]">
+      <span>Built with Northline Transportation as our anchor customer. More to come.</span>
+      <a href="#customers" class="hover:text-[var(--color-fg)]">Customer stories →</a>
     </div>
   </div>
 </section>

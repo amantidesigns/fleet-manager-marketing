@@ -26,7 +26,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   const resend = new Resend(apiKey);
   const { error } = await resend.emails.send({
-    from: "Fleet Manager <waitlist@fleet-manager.dev>",
+    from: "Fleet Manager <onboarding@resend.dev>",
     to,
     subject: `[Fleet Manager] New waitlist signup: ${email}`,
     text: `New waitlist signup\n\nEmail: ${email}\nUser-Agent: ${request.headers.get("user-agent") ?? "unknown"}\nReferer: ${request.headers.get("referer") ?? "unknown"}\nTime: ${new Date().toISOString()}`,
