@@ -18,30 +18,30 @@ const cards = [
 ];
 ---
 <section class="border-b border-[var(--color-border)] bg-[var(--color-bg)]" id="product">
-  <div class="mx-auto max-w-[1180px] px-6 py-24">
+  <div class="mx-auto max-w-[1180px] px-6 py-16 md:py-24">
     <div class="max-w-3xl">
-      <h2 class="text-[36px] font-semibold leading-[1.05] tracking-[-0.025em] md:text-[48px]">
+      <h2 class="text-[30px] font-semibold leading-[1.05] tracking-[-0.025em] md:text-[48px]">
         A new species of dispatch tool.
       </h2>
-      <p class="mt-5 max-w-2xl text-[17px] leading-[1.55] text-[var(--color-muted)]">
+      <p class="mt-4 max-w-2xl text-[15px] leading-[1.55] text-[var(--color-muted)] md:mt-5 md:text-[17px]">
         Purpose-built for small fleets that move people, not packages. Fleet Manager replaces three tools and a binder with one operating picture your whole office sees the same way.
       </p>
     </div>
 
-    <div class="mt-16 grid gap-4 md:grid-cols-3">
+    <div class="mt-10 grid gap-4 md:mt-16 md:grid-cols-3">
       {cards.map((c) => (
-        <div class="group relative overflow-hidden rounded-[14px] border border-[var(--color-border)] bg-[var(--color-surface)] p-7">
+        <div class="group relative overflow-hidden rounded-[14px] border border-[var(--color-border)] bg-[var(--color-surface)] p-5 md:p-7">
           <div
             class="pointer-events-none absolute inset-x-0 top-0 h-px opacity-50"
             style="background: linear-gradient(to right, transparent, var(--color-border-3), transparent);"
           ></div>
-          <div class="relative mb-8 grid h-44 place-items-center overflow-hidden rounded-[12px] border border-[var(--color-border)] bg-[var(--color-bg-2)]">
+          <div class="relative mb-6 grid h-32 place-items-center overflow-hidden rounded-[12px] border border-[var(--color-border)] bg-[var(--color-bg-2)] md:mb-8 md:h-44">
             <div
               class="absolute inset-0 opacity-60"
               style="background: radial-gradient(60% 60% at 50% 30%, rgba(46,134,193,0.12), transparent 70%);"
             ></div>
             {c.glyph === "stack" && (
-              <svg width="120" height="120" viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative">
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[88px] w-[88px] md:h-[120px] md:w-[120px]">
                 <path d="M32 8 L56 20 L32 32 L8 20 Z" opacity="0.95" />
                 <path d="M8 28 L32 40 L56 28" opacity="0.6" />
                 <path d="M8 36 L32 48 L56 36" opacity="0.35" />
@@ -49,7 +49,7 @@ const cards = [
               </svg>
             )}
             {c.glyph === "pulse" && (
-              <svg width="120" height="120" viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative">
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[88px] w-[88px] md:h-[120px] md:w-[120px]">
                 <circle cx="32" cy="32" r="26" opacity="0.18" />
                 <circle cx="32" cy="32" r="20" opacity="0.35" />
                 <circle cx="32" cy="32" r="12" opacity="0.65" />
@@ -57,7 +57,7 @@ const cards = [
               </svg>
             )}
             {c.glyph === "sun" && (
-              <svg width="120" height="120" viewBox="0 0 64 64" fill="none" stroke="var(--color-accent-2)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative">
+              <svg viewBox="0 0 64 64" fill="none" stroke="var(--color-accent-2)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="relative h-[88px] w-[88px] md:h-[120px] md:w-[120px]">
                 <circle cx="32" cy="42" r="11" opacity="0.95" />
                 <path d="M19 42 H6 M58 42 H45 M32 28 V14 M14 24 L23 33 M50 24 L41 33" />
                 <path d="M2 54 H62" opacity="0.35" />
@@ -65,8 +65,8 @@ const cards = [
               </svg>
             )}
           </div>
-          <div class="text-[17px] font-semibold tracking-[-0.01em]">{c.label}</div>
-          <p class="mt-2.5 text-[14px] leading-[1.55] text-[var(--color-muted)]">{c.body}</p>
+          <div class="text-[15px] font-semibold tracking-[-0.01em] md:text-[17px]">{c.label}</div>
+          <p class="mt-2 text-[13px] leading-[1.55] text-[var(--color-muted)] md:mt-2.5 md:text-[14px]">{c.body}</p>
         </div>
       ))}
     </div>

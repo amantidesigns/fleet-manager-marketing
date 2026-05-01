@@ -10,13 +10,13 @@ const marks = [
 ];
 ---
 <section class="border-b border-[var(--color-border)] bg-[var(--color-bg)]">
-  <div class="mx-auto max-w-[1180px] px-6 py-12">
-    <div class="mb-7 flex items-center justify-center">
+  <div class="mx-auto max-w-[1180px] px-6 py-8 md:py-12">
+    <div class="mb-5 flex items-center justify-center md:mb-7">
       <span class="section-label">Trusted by small fleets that move people</span>
     </div>
-    <div class="logo-strip flex flex-wrap items-center justify-center gap-x-12 gap-y-4 md:flex-nowrap md:justify-between">
+    <div class="logo-strip flex flex-wrap items-center justify-center gap-x-5 gap-y-3 md:flex-nowrap md:justify-between md:gap-x-12 md:gap-y-4">
       {marks.map((m) => (
-        <span class="font-mono text-[12px] uppercase tracking-[0.16em] text-[var(--color-fg-dim)]">
+        <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-fg-dim)] md:text-[12px] md:tracking-[0.16em]">
           {m}
         </span>
       ))}

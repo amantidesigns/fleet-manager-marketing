@@ -19,52 +19,52 @@ const secondary = {
 };
 ---
 <section id="customers" class="border-b border-[var(--color-border)] bg-[var(--color-bg)]">
-  <div class="mx-auto max-w-[1180px] px-6 py-24">
-    <div class="mb-10 flex items-end justify-between">
+  <div class="mx-auto max-w-[1180px] px-6 py-16 md:py-24">
+    <div class="mb-7 flex items-end justify-between md:mb-10">
       <a href="#customers" class="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-fg)]">View all →</a>
     </div>
 
-    <div class="grid gap-4 md:grid-cols-[1.86fr_1fr]">
+    <div class="grid grid-cols-[1.86fr_1fr] gap-2 md:gap-4">
       <!-- Featured (lead) testimonial -->
       <figure
-        class="flex min-h-[420px] flex-col justify-between rounded-[20px] p-10 md:p-12"
+        class="flex min-h-[200px] flex-col justify-between rounded-[12px] p-5 md:min-h-[420px] md:rounded-[20px] md:p-12"
         style={`background: ${featured.bg}; color: ${featured.fg};`}
       >
-        <blockquote class="text-[28px] font-medium leading-[1.15] tracking-[-0.015em] md:text-[34px]">
+        <blockquote class="text-[18px] font-medium leading-[1.18] tracking-[-0.015em] md:text-[34px] md:leading-[1.15]">
           “{featured.quote}”
         </blockquote>
-        <figcaption class="mt-10 flex items-center gap-3 text-[14px]">
-          <span class="grid h-10 w-10 place-items-center rounded-full bg-black/15 font-semibold">
+        <figcaption class="mt-5 flex items-center gap-2 text-[12px] md:mt-10 md:gap-3 md:text-[14px]">
+          <span class="grid h-7 w-7 place-items-center rounded-full bg-black/15 font-semibold md:h-10 md:w-10">
             {featured.initial}
           </span>
-          <span>
-            <div class="font-semibold">{featured.name}</div>
-            <div class="opacity-75">{featured.role}</div>
+          <span class="min-w-0">
+            <div class="truncate font-semibold">{featured.name}</div>
+            <div class="truncate opacity-75">{featured.role}</div>
           </span>
         </figcaption>
       </figure>
 
       <!-- Secondary -->
       <figure
-        class="flex min-h-[420px] flex-col justify-between rounded-[20px] p-8"
+        class="flex min-h-[200px] flex-col justify-between rounded-[12px] p-4 md:min-h-[420px] md:rounded-[20px] md:p-8"
         style={`background: ${secondary.bg}; color: ${secondary.fg};`}
       >
-        <blockquote class="text-[20px] font-medium leading-[1.2] tracking-[-0.01em] md:text-[22px]">
+        <blockquote class="text-[14px] font-medium leading-[1.22] tracking-[-0.01em] md:text-[22px] md:leading-[1.2]">
           “{secondary.quote}”
         </blockquote>
-        <figcaption class="mt-8 flex items-center gap-3 text-[13px]">
-          <span class="grid h-9 w-9 place-items-center rounded-full bg-black/15 font-semibold">
+        <figcaption class="mt-4 flex items-center gap-2 text-[11px] md:mt-8 md:gap-3 md:text-[13px]">
+          <span class="grid h-6 w-6 place-items-center rounded-full bg-black/15 font-semibold md:h-9 md:w-9">
             {secondary.initial}
           </span>
-          <span>
-            <div class="font-semibold">{secondary.name}</div>
-            <div class="opacity-75">{secondary.role}</div>
+          <span class="min-w-0">
+            <div class="truncate font-semibold">{secondary.name}</div>
+            <div class="truncate opacity-75">{secondary.role}</div>
           </span>
         </figcaption>
       </figure>
     </div>
 
-    <div class="mt-7 flex items-center justify-between text-[12px] text-[var(--color-muted)]">
+    <div class="mt-5 flex flex-col gap-1 text-[12px] text-[var(--color-muted)] md:mt-7 md:flex-row md:items-center md:justify-between">
       <span>Built with Northline Transportation as our anchor customer. More to come.</span>
       <a href="#customers" class="hover:text-[var(--color-fg)]">Customer stories →</a>
     </div>
